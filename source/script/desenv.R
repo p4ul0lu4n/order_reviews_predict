@@ -28,8 +28,8 @@ for(i in 1:length(bases)){
                           dec = ".", 
                           encoding = "UTF-8",
                           na = ''
-                          )
          )
+  )
 }
 
 # ANALISE DESCRITIVA ------------------------------------------------------------
@@ -108,7 +108,7 @@ data_new_var = data %>%
                                             payment_type == 'voucher' ~ 4, 
                                             TRUE ~ 0), 
                 pag1 = ifelse(test = payment_installments == 1, yes = 1, no = 0)
-                ) %>%
+  ) %>%
   # dplyr::group_by(review_id) %>%
   # dplyr::mutate(qtd_itens = max(order_item_id)) %>% 
   # dplyr::ungroup() %>%
