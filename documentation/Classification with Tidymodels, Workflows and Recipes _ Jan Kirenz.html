@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0067)https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/ -->
-<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en-us">
 
-  
+<head>
+
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 4.3.1">
@@ -48,9 +49,9 @@
   
   
     
-    <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
 
     
     
@@ -60,8 +61,8 @@
     
       
       
-        <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/paraiso-light.min.css" crossorigin="anonymous" title="hl-light">
-        <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/paraiso-light.min.css" crossorigin="anonymous" title="hl-dark" disabled="">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/paraiso-light.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/paraiso-light.min.css" crossorigin="anonymous" title="hl-dark" disabled>
       
     
 
@@ -73,13 +74,13 @@
 
   
   
-  <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arapey:400,400i|Karla:400,700|Roboto+Mono|Open Sans:300">
   
 
   
   
   
-  <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/academic.min.1322fc49e20b88c93e5b9cdb13456289.css">
+  <link rel="stylesheet" href="/css/academic.min.1322fc49e20b88c93e5b9cdb13456289.css">
 
   
     
@@ -90,7 +91,7 @@
     
     
     
-    <link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/academic.6c3df0ca8ce2f38eb4e487b85f549896.css">
+    <link rel="stylesheet" href="/css/academic.6c3df0ca8ce2f38eb4e487b85f549896.css">
   
 
   
@@ -104,18 +105,18 @@
       ga('require', 'urlChangeTracker');
       ga('send', 'pageview');
     </script>
-    <script async="" src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/analytics.js.transferir"></script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
     
-    <script async="" src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/autotrack.js.transferir" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
     
   
   
 
   
 
-  <link rel="manifest" href="https://www.kirenz.com/site.webmanifest">
-  <link rel="icon" type="image/png" href="https://www.kirenz.com/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="https://www.kirenz.com/img/icon-192.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
   <link rel="canonical" href="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/">
 
@@ -133,15 +134,15 @@
   <meta property="og:description" content="Classifiaction with Tidymodels, Workflows and Recipes"><meta property="og:image" content="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/featured.jpg">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2021-02-16T00:00:00+00:00">
+  <meta property="article:published_time" content="2021-02-16T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2021-05-24T10:05:38+02:00">
-  
-
+  <meta property="article:modified_time" content="2021-05-24T10:05:38&#43;02:00">
   
 
-<link rel="stylesheet" href="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/cookieconsent.min.css">
-<script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/cookieconsent.min.js.transferir"></script>
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
   window.addEventListener("load", function(){
     window.cookieconsent.initialise({
@@ -175,237 +176,10 @@
 
   <title>Classification with Tidymodels, Workflows and Recipes | Jan Kirenz</title>
 
-<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
-.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
-.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
-.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
-</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_About.MathJax_MousePost {outline: none}
-.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-.MathJax_MenuItem {padding: 2px 2em; background: transparent}
-.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
-.MathJax_MenuActive .MathJax_MenuArrow {color: white}
-.MathJax_MenuArrow.RTL {left: .5em; right: auto}
-.MathJax_MenuCheck {position: absolute; left: .7em}
-.MathJax_MenuCheck.RTL {right: .7em; left: auto}
-.MathJax_MenuRadioCheck {position: absolute; left: 1em}
-.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
-.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
-.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
-.MathJax_MenuDisabled {color: GrayText}
-.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
-.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
-.MathJax_ContextMenu:focus {outline: none}
-.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
-#MathJax_AboutClose {top: .2em; right: .2em}
-.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
-.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
-.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
-.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_MenuClose:hover span {background-color: #CCC!important}
-.MathJax_MenuClose:hover:focus {outline: none}
-</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
-</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
-.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
-</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
-#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-</style><style type="text/css">.MathJax_Preview {color: #888}
-#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
-#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
-.MathJax_Error {color: #CC0000; font-style: italic}
-</style><style type="text/css">.MJXp-script {font-size: .8em}
-.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
-.MJXp-bold {font-weight: bold}
-.MJXp-italic {font-style: italic}
-.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-largeop {font-size: 150%}
-.MJXp-largeop.MJXp-int {vertical-align: -.2em}
-.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
-.MJXp-display {display: block; text-align: center; margin: 1em 0}
-.MJXp-math span {display: inline-block}
-.MJXp-box {display: block!important; text-align: center}
-.MJXp-box:after {content: " "}
-.MJXp-rule {display: block!important; margin-top: .1em}
-.MJXp-char {display: block!important}
-.MJXp-mo {margin: 0 .15em}
-.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
-.MJXp-denom {display: inline-table!important; width: 100%}
-.MJXp-denom > * {display: table-row!important}
-.MJXp-surd {vertical-align: top}
-.MJXp-surd > * {display: block!important}
-.MJXp-script-box > *  {display: table!important; height: 50%}
-.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
-.MJXp-script-box > *:last-child > * {vertical-align: bottom}
-.MJXp-script-box > * > * > * {display: block!important}
-.MJXp-mphantom {visibility: hidden}
-.MJXp-munderover {display: inline-table!important}
-.MJXp-over {display: inline-block!important; text-align: center}
-.MJXp-over > * {display: block!important}
-.MJXp-munderover > * {display: table-row!important}
-.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
-.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
-.MJXp-mtr {display: table-row!important}
-.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
-.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-mlabeledtr {display: table-row!important}
-.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
-.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
-.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
-.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
-.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
-.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
-.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
-.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
-.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
-.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
-.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
-.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
-</style><style type="text/css">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
-.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
-.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
-.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
-.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
-.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
-.mjx-numerator {display: block; text-align: center}
-.mjx-denominator {display: block; text-align: center}
-.MJXc-stacked {height: 0; position: relative}
-.MJXc-stacked > * {position: absolute}
-.MJXc-bevelled > * {display: inline-block}
-.mjx-stack {display: inline-block}
-.mjx-op {display: block}
-.mjx-under {display: table-cell}
-.mjx-over {display: block}
-.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
-.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
-.mjx-stack > .mjx-sup {display: block}
-.mjx-stack > .mjx-sub {display: block}
-.mjx-prestack > .mjx-presup {display: block}
-.mjx-prestack > .mjx-presub {display: block}
-.mjx-delim-h > .mjx-char {display: inline-block}
-.mjx-surd {vertical-align: top}
-.mjx-mphantom * {visibility: hidden}
-.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
-.mjx-annotation-xml {line-height: normal}
-.mjx-menclose > svg {fill: none; stroke: currentColor}
-.mjx-mtr {display: table-row}
-.mjx-mlabeledtr {display: table-row}
-.mjx-mtd {display: table-cell; text-align: center}
-.mjx-label {display: table-row}
-.mjx-box {display: inline-block}
-.mjx-block {display: block}
-.mjx-span {display: inline}
-.mjx-char {display: block; white-space: pre}
-.mjx-itable {display: inline-table; width: auto}
-.mjx-row {display: table-row}
-.mjx-cell {display: table-cell}
-.mjx-table {display: table; width: 100%}
-.mjx-line {display: block; height: 0}
-.mjx-strut {width: 0; padding-top: 1em}
-.mjx-vsize {width: 0}
-.MJXc-space1 {margin-left: .167em}
-.MJXc-space2 {margin-left: .222em}
-.MJXc-space3 {margin-left: .278em}
-.mjx-chartest {display: block; visibility: hidden; position: absolute; top: 0; line-height: normal; font-size: 500%}
-.mjx-chartest .mjx-char {display: inline}
-.mjx-chartest .mjx-box {padding-top: 1000px}
-.MJXc-processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
-.MJXc-processed {display: none}
-.mjx-test {display: block; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
-.mjx-ex-box-test {position: absolute; overflow: hidden; width: 1px; height: 60ex}
-.mjx-line-box-test {display: table!important}
-.mjx-line-box-test span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
-#MathJax_CHTML_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
-.mjx-chtml .mjx-noError {line-height: 1.2; vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
-.MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
-.MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
-.MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
-.MJXc-TeX-unknown-BI {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: bold}
-.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
-.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
-.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
-.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
-.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
-.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
-.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
-.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
-.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
-.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
-.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
-.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
-.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
-.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
-.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
-.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
-.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
-.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
-.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
-.MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw}
-.MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw}
-@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
-@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
-@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
-@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
-@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
-@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
-@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
-@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
-@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
-@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
-@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
-@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
-@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
-@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
-@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
-@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
-@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
-@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
-@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
-@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
-@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
-@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
-@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
-@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-vec-R; src: local('MathJax_Vector'), local('MathJax_Vector-Regular')}
-@font-face {font-family: MJXc-TeX-vec-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Regular.otf') format('opentype')}
-@font-face {font-family: MJXc-TeX-vec-B; src: local('MathJax_Vector Bold'), local('MathJax_Vector-Bold')}
-@font-face {font-family: MJXc-TeX-vec-Bx; src: local('MathJax_Vector'); font-weight: bold}
-@font-face {font-family: MJXc-TeX-vec-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Bold.otf') format('opentype')}
-</style><style></style></head>
+</head>
 
 
-<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71"><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-classic cc-bottom cc-color-override--560809852 " style=""><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://cookies.insites.com/" target="_blank">Learn more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div><div id="MathJax_Message" style="display: none;"></div>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
 
   <aside class="search-results" id="search">
   <div class="container">
@@ -416,13 +190,14 @@
           <h1>Search</h1>
         </div>
         <div class="col-6 col-search-close">
-          <a class="js-search" href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
         </div>
       </div>
 
       <div id="search-box">
         
-        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off" autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
         
       </div>
 
@@ -443,9 +218,10 @@
   <div class="container">
 
     
-      <a class="navbar-brand" href="https://www.kirenz.com/">Jan Kirenz</a>
+      <a class="navbar-brand" href="/">Jan Kirenz</a>
       
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span><i class="fas fa-bars"></i></span>
       </button>
       
@@ -474,7 +250,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link  active" href="https://www.kirenz.com/post"><span>Tutorials</span></a>
+          <a class="nav-link  active" href="/post"><span>Tutorials</span></a>
         </li>
 
         
@@ -496,7 +272,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="https://www.kirenz.com/teaching"><span>Teaching</span></a>
+          <a class="nav-link " href="/teaching"><span>Teaching</span></a>
         </li>
 
         
@@ -518,7 +294,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="https://www.kirenz.com/projects"><span>Resources</span></a>
+          <a class="nav-link " href="/projects"><span>Resources</span></a>
         </li>
 
         
@@ -540,7 +316,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="https://www.kirenz.com/contact"><span>Contact</span></a>
+          <a class="nav-link " href="/contact"><span>Contact</span></a>
         </li>
 
         
@@ -552,7 +328,7 @@
 
         
         <li class="nav-item">
-          <a class="nav-link js-search" href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#"><i class="fas fa-search" aria-hidden="true"></i></a>
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
         </li>
         
 
@@ -560,7 +336,7 @@
 
         
         <li class="nav-item">
-          <a class="nav-link js-dark-toggle" href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
         </li>
         
 
@@ -571,7 +347,7 @@
 </nav>
 
 
-  <article class="article" itemscope="" itemtype="http://schema.org/Article">
+  <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
@@ -588,7 +364,7 @@
 
 
 <div class="article-header d-xl-none">
-  <div class="featured-image" style="background-image: url(&#39;/post/2021-02-17-r-classification-tidymodels/featured_hud345a08f68d9db972192440967007b00_203521_800x0_resize_q90_lanczos.jpg&#39;);"></div>
+  <div class="featured-image" style="background-image: url('/post/2021-02-17-r-classification-tidymodels/featured_hud345a08f68d9db972192440967007b00_203521_800x0_resize_q90_lanczos.jpg');"></div>
   <span class="article-header-caption">[Photo: Tidymodels)</span>
 </div>
 
@@ -605,8 +381,8 @@
 
 
 
-<meta content="2021-02-16 00:00:00 +0000 UTC" itemprop="datePublished">
-<meta content="2021-05-24 10:05:38 +0200 +0200" itemprop="dateModified">
+<meta content="2021-02-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2021-05-24 10:05:38 &#43;0200 &#43;0200" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -619,7 +395,7 @@
 
 
 
-  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="https://www.kirenz.com/authors/jan/">Jan Kirenz</a></span>
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jan/">Jan Kirenz</a></span>
 
   </div>
   
@@ -654,7 +430,7 @@
   <span class="middot-divider"></span>
   <span class="article-categories">
     <i class="fas fa-folder"></i>
-    <a href="https://www.kirenz.com/categories/r/">R</a>, <a href="https://www.kirenz.com/categories/tidymodels/">Tidymodels</a></span>
+    <a href="/categories/r/">R</a>, <a href="/categories/tidymodels/">Tidymodels</a></span>
   
 
   
@@ -768,7 +544,7 @@
     </div>
     <div class="col-6">
       <div class="split-header-image">
-        <img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/featured_hud345a08f68d9db972192440967007b00_203521_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
+        <img src="/post/2021-02-17-r-classification-tidymodels/featured_hud345a08f68d9db972192440967007b00_203521_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
         <span class="article-header-caption">[Photo: Tidymodels)</span>
       </div>
     </div>
@@ -784,8 +560,8 @@
 
 
 
-<meta content="2021-02-16 00:00:00 +0000 UTC" itemprop="datePublished">
-<meta content="2021-05-24 10:05:38 +0200 +0200" itemprop="dateModified">
+<meta content="2021-02-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2021-05-24 10:05:38 &#43;0200 &#43;0200" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -798,7 +574,7 @@
 
 
 
-  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="https://www.kirenz.com/authors/jan/">Jan Kirenz</a></span>
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jan/">Jan Kirenz</a></span>
 
   </div>
   
@@ -833,7 +609,7 @@
   <span class="middot-divider"></span>
   <span class="article-categories">
     <i class="fas fa-folder"></i>
-    <a href="https://www.kirenz.com/categories/r/">R</a>, <a href="https://www.kirenz.com/categories/tidymodels/">Tidymodels</a></span>
+    <a href="/categories/r/">R</a>, <a href="/categories/tidymodels/">Tidymodels</a></span>
   
 
   
@@ -950,62 +726,62 @@
 
     <div class="article-style" itemprop="articleBody">
       
-<script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/header-attrs.js.transferir"></script>
+<script src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#business-understanding"><span class="toc-section-number">1</span> Business understanding</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-understanding"><span class="toc-section-number">2</span> Data understanding</a>
+<li><a href="#business-understanding"><span class="toc-section-number">1</span> Business understanding</a></li>
+<li><a href="#data-understanding"><span class="toc-section-number">2</span> Data understanding</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#import-data"><span class="toc-section-number">2.1</span> Import Data</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#clean-data"><span class="toc-section-number">2.2</span> Clean data</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#format-data"><span class="toc-section-number">2.3</span> Format data</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#missing-data"><span class="toc-section-number">2.4</span> Missing data</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#create-new-variables"><span class="toc-section-number">2.5</span> Create new variables</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-overview"><span class="toc-section-number">2.6</span> Data overview</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-splitting"><span class="toc-section-number">2.7</span> Data splitting</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-exploration"><span class="toc-section-number">2.8</span> Data exploration</a>
+<li><a href="#import-data"><span class="toc-section-number">2.1</span> Import Data</a></li>
+<li><a href="#clean-data"><span class="toc-section-number">2.2</span> Clean data</a></li>
+<li><a href="#format-data"><span class="toc-section-number">2.3</span> Format data</a></li>
+<li><a href="#missing-data"><span class="toc-section-number">2.4</span> Missing data</a></li>
+<li><a href="#create-new-variables"><span class="toc-section-number">2.5</span> Create new variables</a></li>
+<li><a href="#data-overview"><span class="toc-section-number">2.6</span> Data overview</a></li>
+<li><a href="#data-splitting"><span class="toc-section-number">2.7</span> Data splitting</a></li>
+<li><a href="#data-exploration"><span class="toc-section-number">2.8</span> Data exploration</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#create-data-copy"><span class="toc-section-number">2.8.1</span> Create data copy</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#geographical-overview"><span class="toc-section-number">2.8.2</span> Geographical overview</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#numerical-variables"><span class="toc-section-number">2.8.3</span> Numerical variables</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#categorical-variables"><span class="toc-section-number">2.8.4</span> Categorical variables</a></li>
+<li><a href="#create-data-copy"><span class="toc-section-number">2.8.1</span> Create data copy</a></li>
+<li><a href="#geographical-overview"><span class="toc-section-number">2.8.2</span> Geographical overview</a></li>
+<li><a href="#numerical-variables"><span class="toc-section-number">2.8.3</span> Numerical variables</a></li>
+<li><a href="#categorical-variables"><span class="toc-section-number">2.8.4</span> Categorical variables</a></li>
 </ul></li>
 </ul></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-preparation"><span class="toc-section-number">3</span> Data preparation</a>
+<li><a href="#data-preparation"><span class="toc-section-number">3</span> Data preparation</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-preparation-1"><span class="toc-section-number">3.1</span> Data preparation</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#data-prepropecessing-recipe"><span class="toc-section-number">3.2</span> Data prepropecessing recipe</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#validation-set"><span class="toc-section-number">3.3</span> Validation set</a></li>
+<li><a href="#data-preparation-1"><span class="toc-section-number">3.1</span> Data preparation</a></li>
+<li><a href="#data-prepropecessing-recipe"><span class="toc-section-number">3.2</span> Data prepropecessing recipe</a></li>
+<li><a href="#validation-set"><span class="toc-section-number">3.3</span> Validation set</a></li>
 </ul></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#model-building"><span class="toc-section-number">4</span> Model building</a>
+<li><a href="#model-building"><span class="toc-section-number">4</span> Model building</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#specify-models"><span class="toc-section-number">4.1</span> Specify models</a>
+<li><a href="#specify-models"><span class="toc-section-number">4.1</span> Specify models</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#logistic-regression"><span class="toc-section-number">4.1.1</span> Logistic regression</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#random-forest"><span class="toc-section-number">4.1.2</span> Random forest</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#boosted-tree-xgboost"><span class="toc-section-number">4.1.3</span> Boosted tree (XGBoost)</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#k-nearest-neighbor"><span class="toc-section-number">4.1.4</span> K-nearest neighbor</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#neural-network"><span class="toc-section-number">4.1.5</span> Neural network</a></li>
+<li><a href="#logistic-regression"><span class="toc-section-number">4.1.1</span> Logistic regression</a></li>
+<li><a href="#random-forest"><span class="toc-section-number">4.1.2</span> Random forest</a></li>
+<li><a href="#boosted-tree-xgboost"><span class="toc-section-number">4.1.3</span> Boosted tree (XGBoost)</a></li>
+<li><a href="#k-nearest-neighbor"><span class="toc-section-number">4.1.4</span> K-nearest neighbor</a></li>
+<li><a href="#neural-network"><span class="toc-section-number">4.1.5</span> Neural network</a></li>
 </ul></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#create-workflows"><span class="toc-section-number">4.2</span> Create workflows</a>
+<li><a href="#create-workflows"><span class="toc-section-number">4.2</span> Create workflows</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#logistic-regression-1"><span class="toc-section-number">4.2.1</span> Logistic regression</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#random-forest-1"><span class="toc-section-number">4.2.2</span> Random forest</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#xgboost"><span class="toc-section-number">4.2.3</span> XGBoost</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#k-nearest-neighbor-1"><span class="toc-section-number">4.2.4</span> K-nearest neighbor</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#neural-network-1"><span class="toc-section-number">4.2.5</span> Neural network</a></li>
+<li><a href="#logistic-regression-1"><span class="toc-section-number">4.2.1</span> Logistic regression</a></li>
+<li><a href="#random-forest-1"><span class="toc-section-number">4.2.2</span> Random forest</a></li>
+<li><a href="#xgboost"><span class="toc-section-number">4.2.3</span> XGBoost</a></li>
+<li><a href="#k-nearest-neighbor-1"><span class="toc-section-number">4.2.4</span> K-nearest neighbor</a></li>
+<li><a href="#neural-network-1"><span class="toc-section-number">4.2.5</span> Neural network</a></li>
 </ul></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#evaluate-models"><span class="toc-section-number">4.3</span> Evaluate models</a>
+<li><a href="#evaluate-models"><span class="toc-section-number">4.3</span> Evaluate models</a>
 <ul>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#logistic-regression-2"><span class="toc-section-number">4.3.1</span> Logistic regression</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#random-forest-2"><span class="toc-section-number">4.3.2</span> Random forest</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#xgboost-1"><span class="toc-section-number">4.3.3</span> XGBoost</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#k-nearest-neighbor-2"><span class="toc-section-number">4.3.4</span> K-nearest neighbor</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#neural-network-2"><span class="toc-section-number">4.3.5</span> Neural network</a></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#compare-models"><span class="toc-section-number">4.3.6</span> Compare models</a></li>
+<li><a href="#logistic-regression-2"><span class="toc-section-number">4.3.1</span> Logistic regression</a></li>
+<li><a href="#random-forest-2"><span class="toc-section-number">4.3.2</span> Random forest</a></li>
+<li><a href="#xgboost-1"><span class="toc-section-number">4.3.3</span> XGBoost</a></li>
+<li><a href="#k-nearest-neighbor-2"><span class="toc-section-number">4.3.4</span> K-nearest neighbor</a></li>
+<li><a href="#neural-network-2"><span class="toc-section-number">4.3.5</span> Neural network</a></li>
+<li><a href="#compare-models"><span class="toc-section-number">4.3.6</span> Compare models</a></li>
 </ul></li>
-<li><a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#last-evaluation-on-test-set"><span class="toc-section-number">4.4</span> Last evaluation on test set</a></li>
+<li><a href="#last-evaluation-on-test-set"><span class="toc-section-number">4.4</span> Last evaluation on test set</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1022,7 +798,7 @@
 <p>Note that due to performance reasons, I only show the code for the neural net but don’t actually run it.</p>
 <p>Furthermore, we follow this data science lifecycle process:</p>
 <div class="figure"><span id="fig:crisp1clas"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/CRISP-DM.png" alt="Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)" width="70%" height="70%">
+<img src="https://data-science-tidymodels.netlify.app/css/CRISP-DM.png" alt="Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)" width="70%" height="70%" />
 <p class="caption">
 Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)
 </p>
@@ -1041,7 +817,7 @@ Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2
 <p>Note that in our classification example we again use the dataset from the previous regession tutorial. Therefore, we first need to create our categorical dependent variable from the numeric variable median house value. We will do this in the phase data understanding during the creation of new variables. Afterwards, we will remove the numeric variable median house value from our data.</p>
 <p>Let’s assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The <strong>data processing components</strong> (also called data pipeline) are shown in the figure below (you can use <a href="https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265">Google’s architectural templates</a> to draw a data pipeline).</p>
 <div class="figure"><span id="fig:datapipeline-class2"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/data-pipeline.png" alt="Data processing components">
+<img src="https://data-science-tidymodels.netlify.app/css/data-pipeline.png" alt="Data processing components"  />
 <p class="caption">
 Figure 1.1: Data processing components
 </p>
@@ -1062,19 +838,19 @@ Figure 1.1: Data processing components
 <div id="import-data" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Import Data</h2>
 <p>First of all, let’s import the data:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(tidyverse)
+<pre class="r"><code>library(tidyverse)
 
-LINK &lt;- <span class="hljs-string">"https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"</span>
+LINK &lt;- &quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv&quot;
 housing_df &lt;- read_csv(LINK)</code></pre>
 </div>
 <div id="clean-data" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Clean data</h2>
 <p>To get a first impression of the data we take a look at the top 4 rows:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(gt)
+<pre class="r"><code>library(gt)
 
 housing_df %&gt;% 
-  slice_head(n = <span class="hljs-number">4</span>) %&gt;% 
-  gt() <span class="hljs-comment"># print output using gt</span></code></pre>
+  slice_head(n = 4) %&gt;% 
+  gt() # print output using gt</code></pre>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1481,13 +1257,13 @@ housing_df %&gt;%
   
 </table></div>
 <p>Notice the values in the first row of the variables <code>housing_median_age</code>and <code>median_house_value</code>. We need to remove the strings “years” and “$”. Therefore, we use the function <code>str_remove_all</code> from the <code>stringr</code> package. Since there could be multiple wrong entries of the same type, we apply our corrections to all of the rows of the corresponding variable:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(stringr)
+<pre class="r"><code>library(stringr)
 
 housing_df &lt;- 
   housing_df %&gt;% 
   mutate(
-    housing_median_age = str_remove_all(housing_median_age, <span class="hljs-string">"[years]"</span>),
-    median_house_value = str_remove_all(median_house_value, <span class="hljs-string">"[$]"</span>)
+    housing_median_age = str_remove_all(housing_median_age, &quot;[years]&quot;),
+    median_house_value = str_remove_all(median_house_value, &quot;[$]&quot;)
   )</code></pre>
 <p>We don’t cover the phase of data cleaning in detail in this tutorial. However, in a real data science project, data cleaning is usually a very time consuming process.</p>
 </div>
@@ -1498,40 +1274,40 @@ housing_df &lt;-
 <li><p>Numeric variables should be formatted as integers (<code>int</code>) or double precision floating point numbers (<code>dbl</code>).</p></li>
 <li><p>Categorical (nominal and ordinal) variables should usually be formatted as factors (<code>fct</code>) and not characters (<code>chr</code>). Especially, if they don’t have many levels.</p></li>
 </ul>
-<pre class="r"><code class="hljs">glimpse(housing_df)</code></pre>
-<pre><code class="hljs objectivec"><span class="hljs-meta">## Rows: 20,640</span>
-<span class="hljs-meta">## Columns: 10</span>
-<span class="hljs-meta">## $ longitude          <span class="hljs-meta-string">&lt;dbl&gt;</span> -122.23, -122.22, -122.24, -122.25, -122.25, -122.2…</span>
-<span class="hljs-meta">## $ latitude           <span class="hljs-meta-string">&lt;dbl&gt;</span> 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37…</span>
-<span class="hljs-meta">## $ housing_median_age <span class="hljs-meta-string">&lt;chr&gt;</span> <span class="hljs-meta-string">"41.0"</span>, <span class="hljs-meta-string">"21.0"</span>, <span class="hljs-meta-string">"52.0"</span>, <span class="hljs-meta-string">"52.0"</span>, <span class="hljs-meta-string">"52.0"</span>, <span class="hljs-meta-string">"52.0"</span>, <span class="hljs-meta-string">"52…
+<pre class="r"><code>glimpse(housing_df)</code></pre>
+<pre><code>## Rows: 20,640
+## Columns: 10
+## $ longitude          &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.2…
+## $ latitude           &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37…
+## $ housing_median_age &lt;chr&gt; &quot;41.0&quot;, &quot;21.0&quot;, &quot;52.0&quot;, &quot;52.0&quot;, &quot;52.0&quot;, &quot;52.0&quot;, &quot;52…
 ## $ total_rooms        &lt;dbl&gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555,…
 ## $ total_bedrooms     &lt;dbl&gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707, …
 ## $ population         &lt;dbl&gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 15…
 ## $ households         &lt;dbl&gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714, …
 ## $ median_income      &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.6…
-## $ median_house_value &lt;chr&gt; "</span>452600.0<span class="hljs-meta-string">", "</span>358500.0<span class="hljs-meta-string">", "</span>352100.0<span class="hljs-meta-string">", "</span>341300.0<span class="hljs-meta-string">", "</span>34…</span>
-<span class="hljs-meta">## $ ocean_proximity    <span class="hljs-meta-string">&lt;chr&gt;</span> <span class="hljs-meta-string">"NEAR BAY"</span>, <span class="hljs-meta-string">"NEAR BAY"</span>, <span class="hljs-meta-string">"NEAR BAY"</span>, <span class="hljs-meta-string">"NEAR BAY"</span>, <span class="hljs-meta-string">"NE…</span></span></code></pre>
+## $ median_house_value &lt;chr&gt; &quot;452600.0&quot;, &quot;358500.0&quot;, &quot;352100.0&quot;, &quot;341300.0&quot;, &quot;34…
+## $ ocean_proximity    &lt;chr&gt; &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NE…</code></pre>
 <p>The package <code>visdat</code> helps us to explore the data class structure visually:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(visdat)
+<pre class="r"><code>library(visdat)
 
 vis_dat(housing_df)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can observe that the numeric variables <code>housing_media_age</code> and <code>median_house_value</code> are declared as characters (<code>chr</code>) instead of numeric. We choose to format the variables as <code>dbl</code>, since the values could be floating-point numbers.</p>
 <p>Furthermore, the categorical variable <code>ocean_proximity</code> is formatted as character instead of factor. Let’s take a look at the levels of the variable:</p>
-<pre class="r"><code class="hljs">housing_df %&gt;% 
+<pre class="r"><code>housing_df %&gt;% 
   count(ocean_proximity,
-        sort = <span class="hljs-literal">TRUE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 5 x 2</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   ocean_proximity     n</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;           &lt;int&gt;</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 &lt;1H OCEAN        9136</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 INLAND           6551</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 NEAR OCEAN       2658</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 NEAR BAY         2290</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 ISLAND              5</span></span></code></pre>
+        sort = TRUE)</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   ocean_proximity     n
+##   &lt;chr&gt;           &lt;int&gt;
+## 1 &lt;1H OCEAN        9136
+## 2 INLAND           6551
+## 3 NEAR OCEAN       2658
+## 4 NEAR BAY         2290
+## 5 ISLAND              5</code></pre>
 <p>The variable has only 5 levels and therefore should be formatted as a factor.</p>
 <p>Note that it is usually a good idea to first take care of the numerical variables. Afterwards, we can easily convert all remaining character variables to factors using the function <code>across</code> from the dplyr package (which is part of the tidyverse).</p>
-<pre class="r"><code class="hljs"><span class="hljs-comment"># convert to numeric</span>
+<pre class="r"><code># convert to numeric
 housing_df &lt;- 
   housing_df %&gt;% 
   mutate(
@@ -1539,7 +1315,7 @@ housing_df &lt;-
     median_house_value = as.numeric(median_house_value)
   )
 
-<span class="hljs-comment"># convert all remaining character variables to factors </span>
+# convert all remaining character variables to factors 
 housing_df &lt;- 
   housing_df %&gt;% 
   mutate(across(where(is.character), as.factor))</code></pre>
@@ -1547,16 +1323,16 @@ housing_df &lt;-
 <div id="missing-data" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Missing data</h2>
 <p>Now let’s turn our attention to missing data. Missing data can be viewed with the function <code>vis_miss</code> from the package <code>visdat</code>. We arrange the data by columns with most missingness:</p>
-<pre class="r"><code class="hljs">vis_miss(housing_df, sort_miss = <span class="hljs-literal">TRUE</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-8-1.png" width="672"></p>
+<pre class="r"><code>vis_miss(housing_df, sort_miss = TRUE)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Here an alternative method to obtain missing data:</p>
-<pre class="r"><code class="hljs">is.na(housing_df) %&gt;% colSums()</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#          longitude           latitude housing_median_age        total_rooms </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#                  0                  0                  0                  0 </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#     total_bedrooms         population         households      median_income </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#                207                  0                  0                  0 </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># median_house_value    ocean_proximity </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#                  0                  0</span></span></code></pre>
+<pre class="r"><code>is.na(housing_df) %&gt;% colSums()</code></pre>
+<pre><code>##          longitude           latitude housing_median_age        total_rooms 
+##                  0                  0                  0                  0 
+##     total_bedrooms         population         households      median_income 
+##                207                  0                  0                  0 
+## median_house_value    ocean_proximity 
+##                  0                  0</code></pre>
 <p>We have a missing rate of 0.1% (207 cases) in our variable <code>total_bedroms</code>. This can cause problems for some algorithms. We will take care of this issue during our data preparation phase.</p>
 </div>
 <div id="create-new-variables" class="section level2" number="2.5">
@@ -1568,29 +1344,29 @@ housing_df &lt;-
 <li><p>And the <em>population per household</em> also seems like an interesting attribute combination to look at.</p></li>
 </ul>
 <p>Let’s create these new attributes:</p>
-<pre class="r"><code class="hljs">housing_df &lt;- 
+<pre class="r"><code>housing_df &lt;- 
   housing_df %&gt;% 
   mutate(rooms_per_household = total_rooms/households,
         bedrooms_per_room = total_bedrooms/total_rooms,
         population_per_household = population/households)</code></pre>
 <p>Furthermore, in our example we need to create our dependent variable and drop the original numeric variable.</p>
-<pre class="r"><code class="hljs">housing_df &lt;- 
+<pre class="r"><code>housing_df &lt;- 
   housing_df %&gt;% 
   mutate(price_category = case_when( 
-    median_house_value &lt; <span class="hljs-number">150000</span> ~ <span class="hljs-string">"below"</span>,
-    median_house_value &gt;= <span class="hljs-number">150000</span> ~ <span class="hljs-string">"above"</span>,
+    median_house_value &lt; 150000 ~ &quot;below&quot;,
+    median_house_value &gt;= 150000 ~ &quot;above&quot;,
     )) %&gt;% 
   mutate(price_category = as.factor(price_category)) %&gt;% 
   select(-median_house_value)</code></pre>
 <p>Since we created the new label <code>price_category</code> from the variable <code>median_house_value</code> it is crucial that we never use the variable <code>median_house_value</code> as a predictor in our models. Therefore we drop it.</p>
 <p>Take a look at our dependent variable and create a table with the package <a href="https://gt.rstudio.com/"><code>gt</code></a></p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(gt)
+<pre class="r"><code>library(gt)
 
 housing_df %&gt;% 
-  count(price_category, <span class="hljs-comment"># count observations</span>
-        name =<span class="hljs-string">"districts_total"</span>) %&gt;%  <span class="hljs-comment"># name the new variable </span>
-  mutate(percent = districts_total/sum(districts_total)) %&gt;%  <span class="hljs-comment"># calculate percentages</span>
-  gt() <span class="hljs-comment"># create table</span></code></pre>
+  count(price_category, # count observations
+        name =&quot;districts_total&quot;) %&gt;%  # name the new variable 
+  mutate(percent = districts_total/sum(districts_total)) %&gt;%  # calculate percentages
+  gt() # create table</code></pre>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1952,24 +1728,24 @@ housing_df %&gt;%
   
 </table></div>
 <p>Let’s make a nice looking table:</p>
-<pre class="r"><code class="hljs">housing_df %&gt;% 
+<pre class="r"><code>housing_df %&gt;% 
   count(price_category, 
-        name =<span class="hljs-string">"districts_total"</span>) %&gt;%
-  mutate(percent = districts_total/sum(districts_total)*<span class="hljs-number">100</span>,
-         percent = round(percent, <span class="hljs-number">2</span>)) %&gt;%
+        name =&quot;districts_total&quot;) %&gt;%
+  mutate(percent = districts_total/sum(districts_total)*100,
+         percent = round(percent, 2)) %&gt;%
  gt() %&gt;%
   tab_header(
-    title = <span class="hljs-string">"California median house prices"</span>,
-    subtitle = <span class="hljs-string">"Districts above and below 150.000$"</span>
+    title = &quot;California median house prices&quot;,
+    subtitle = &quot;Districts above and below 150.000$&quot;
   ) %&gt;%
   cols_label(
-    price_category = <span class="hljs-string">"Price"</span>,
-    districts_total = <span class="hljs-string">"Districts"</span>,
-    percent = <span class="hljs-string">"Percent"</span>
+    price_category = &quot;Price&quot;,
+    districts_total = &quot;Districts&quot;,
+    percent = &quot;Percent&quot;
   ) %&gt;% 
   fmt_number(
     columns = vars(districts_total),
-    suffixing = <span class="hljs-literal">TRUE</span>
+    suffixing = TRUE
   ) </code></pre>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -2310,10 +2086,10 @@ housing_df %&gt;%
 <div id="lzwlxuzllo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="3" class="gt_heading gt_title gt_font_normal" style="">California median house prices</th>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>California median house prices</th>
     </tr>
     <tr>
-      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Districts above and below 150.000$</th>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Districts above and below 150.000$</th>
     </tr>
   </thead>
   <thead class="gt_col_headings">
@@ -2342,7 +2118,7 @@ housing_df %&gt;%
 <div id="data-overview" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Data overview</h2>
 <p>After we took care of our data issues, we can obtain a data summary of all numerical and categorical attributes using a function from the package <code>skimr</code>:</p>
-<pre class="r"><code class="hljs">skim(housing_df)</code></pre>
+<pre class="r"><code>skim(housing_df)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-14">Table 2.1: </span>Data summary</caption>
 <tbody>
@@ -2585,17 +2361,17 @@ housing_df %&gt;%
 <li><p>Further note that the <strong>median income</strong> attribute does not look like it is expressed in US dollars (USD). Actually the data has been scaled and capped at 15 (actually, 15.0001) for higher median incomes, and at 0.5 (actually, 0.4999) for lower median incomes. The numbers represent roughly tens of thousands of dollars (e.g., 3 actually means about $30,000).</p></li>
 </ul>
 <p>Another quick way to get an overview of the type of data you are dealing with is to plot a <strong>histogram</strong> for each numerical attribute. A histogram shows the number of instances (on the vertical axis) that have a given value range (on the horizontal axis). You can either plot this one attribute at a time, or you can use <code>ggscatmat</code> from the package <code>GGally</code> on the whole dataset (as shown in the following code example), and it will plot a histogram for each numerical attribute as well as correlation coefficients (Pearson is the default). We just select the most promising variabels for our plot:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(GGally)
+<pre class="r"><code>library(GGally)
 
 housing_df %&gt;% 
   select(
     housing_median_age, 
     median_income, bedrooms_per_room, rooms_per_household, 
     population_per_household) %&gt;% 
-  ggscatmat(alpha = <span class="hljs-number">0.2</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-15-1.png" width="672"></p>
+  ggscatmat(alpha = 0.2)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Another option is to use <code>ggpairs</code>, where we even can integrate categorical variables like our dependent variable <code>price_category</code> and ocean proximity in the output:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(GGally)
+<pre class="r"><code>library(GGally)
 
 housing_df %&gt;% 
   select(
@@ -2604,7 +2380,7 @@ housing_df %&gt;%
     population_per_household, ocean_proximity,
     price_category) %&gt;% 
   ggpairs()</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-16-1.png" width="672"></p>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>There are a few things you might notice in these histograms:</p>
 <ul>
 <li><p>The variables <em>median income</em>, <em>housing median age</em> were capped.</p></li>
@@ -2617,27 +2393,27 @@ housing_df %&gt;%
 <p>Before we get started with our in-depth data exploration, let’s split our single dataset into two: a training set and a testing set. The training data will be used to fit models, and the testing set will be used to measure model performance. We perform data exploration only on the training data.</p>
 <p>A <strong>training dataset</strong> is a dataset of examples used during the learning process and is used to fit the models. A <strong>test dataset</strong> is a dataset that is independent of the training dataset and is used to evaluate the performance of the final model. If a model fit to the training dataset also fits the test dataset well, minimal <em>overfitting</em> has taken place. A better fitting of the training dataset as opposed to the test dataset usually points to overfitting.</p>
 <p>In our data split, we want to ensure that the training and test set is representative of the categories of our dependent variable.</p>
-<pre class="r"><code class="hljs">housing_df %&gt;% 
+<pre class="r"><code>housing_df %&gt;% 
   ggplot(aes(price_category)) +
   geom_bar() </code></pre>
 <div class="figure"><span id="fig:hist-med-value-class2"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/hist-med-value-class2-1.png" alt="Histogram of Median Proces" width="80%">
+<img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/hist-med-value-class2-1.png" alt="Histogram of Median Proces" width="80%" />
 <p class="caption">
 Figure 2.1: Histogram of Median Proces
 </p>
 </div>
 <p>In general, we would like to have instances for each <em>stratum</em>, or else the estimate of a stratum’s importance may be biased. A <em>stratum</em> (plural strata) refers to a subset (part) of the whole data from which is being sampled. We only have two categories in our data.</p>
 <p>To actually split the data, we can use the <code>rsample</code> package (included in <code>tidymodels</code>) to create an object that contains the information on how to split the data (which we call <code>data_split</code>), and then two more <code>rsample</code> functions to create data frames for the training and testing sets:</p>
-<pre class="r"><code class="hljs"><span class="hljs-comment"># Fix the random numbers by setting the seed </span>
-<span class="hljs-comment"># This enables the analysis to be reproducible </span>
-set.seed(<span class="hljs-number">123</span>)
+<pre class="r"><code># Fix the random numbers by setting the seed 
+# This enables the analysis to be reproducible 
+set.seed(123)
 
-<span class="hljs-comment"># Put 3/4 of the data into the training set </span>
+# Put 3/4 of the data into the training set 
 data_split &lt;- initial_split(housing_df, 
-                           prop = <span class="hljs-number">3</span>/<span class="hljs-number">4</span>, 
+                           prop = 3/4, 
                            strata = price_category)
 
-<span class="hljs-comment"># Create dataframes for the two sets:</span>
+# Create dataframes for the two sets:
 train_data &lt;- training(data_split) 
 test_data &lt;- testing(data_split)</code></pre>
 </div>
@@ -2647,27 +2423,27 @@ test_data &lt;- testing(data_split)</code></pre>
 <div id="create-data-copy" class="section level3" number="2.8.1">
 <h3><span class="header-section-number">2.8.1</span> Create data copy</h3>
 <p>We first make a copy of the training data since we don’t want to alter our data during data exploration.</p>
-<pre class="r"><code class="hljs">data_explore &lt;- train_data</code></pre>
+<pre class="r"><code>data_explore &lt;- train_data</code></pre>
 <p>Next, we take a closer look at the relationships between our variables. In particular, we are interested in the relationships between ur <em>dependent</em> variable <code>price_category</code> and all other variables. The goal is to identify possible <em>predictor variables</em> which we could use in our models to predict the <code>price_category</code>.</p>
 </div>
 <div id="geographical-overview" class="section level3" number="2.8.2">
 <h3><span class="header-section-number">2.8.2</span> Geographical overview</h3>
 <p>Since our data includes information about <code>longitude</code> and <code>latitude</code>, we start our data exploration with the creation of a geographical scatterplot of the data to get some first insights:</p>
-<pre class="r"><code class="hljs">data_explore %&gt;% 
+<pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
-  geom_point(color = <span class="hljs-string">"cornflowerblue"</span>)</code></pre>
+  geom_point(color = &quot;cornflowerblue&quot;)</code></pre>
 <div class="figure"><span id="fig:point-long-lat-class2"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/point-long-lat-class2-1.png" alt="Scatterplot of longitude and latitude" width="80%">
+<img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-class2-1.png" alt="Scatterplot of longitude and latitude" width="80%" />
 <p class="caption">
 Figure 2.2: Scatterplot of longitude and latitude
 </p>
 </div>
 <p>A better visualization that highlights high-density areas (with parameter <code>alpha = 0.1</code> ):</p>
-<pre class="r"><code class="hljs">data_explore %&gt;% 
+<pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
-  geom_point(color = <span class="hljs-string">"cornflowerblue"</span>, alpha = <span class="hljs-number">0.1</span>) </code></pre>
+  geom_point(color = &quot;cornflowerblue&quot;, alpha = 0.1) </code></pre>
 <div class="figure"><span id="fig:point-long-lat-a-class2"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/point-long-lat-a-class2-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%">
+<img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-a-class2-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%" />
 <p class="caption">
 Figure 2.3: Scatterplot of longitude and latitude that highlights high-density areas
 </p>
@@ -2678,86 +2454,86 @@ Figure 2.3: Scatterplot of longitude and latitude that highlights high-density a
 <li>purple is cheap and</li>
 <li>larger circles indicate areas with a larger population.</li>
 </ul>
-<pre class="r"><code class="hljs">data_explore %&gt;% 
+<pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(aes(size = population, color = price_category), 
-             alpha = <span class="hljs-number">0.4</span>)</code></pre>
+             alpha = 0.4)</code></pre>
 <div class="figure"><span id="fig:plot-ca-prices-class2"></span>
-<img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/plot-ca-prices-class2-1.png" alt="California housing_df prices" width="80%">
+<img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/plot-ca-prices-class2-1.png" alt="California housing_df prices" width="80%" />
 <p class="caption">
 Figure 2.4: California housing_df prices
 </p>
 </div>
 <p>Lastly, we add a map to our data:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(ggmap)
+<pre class="r"><code>library(ggmap)
 
 qmplot(x = longitude, 
        y = latitude, 
        data = data_explore, 
-       geom = <span class="hljs-string">"point"</span>, 
+       geom = &quot;point&quot;, 
        color = price_category, 
        size = population,
-       alpha = <span class="hljs-number">0.4</span>) +
-  scale_alpha(guide = <span class="hljs-string">'none'</span>) <span class="hljs-comment"># don't show legend for alpha</span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-19-1.png" width="672"></p>
+       alpha = 0.4) +
+  scale_alpha(guide = &#39;none&#39;) # don&#39;t show legend for alpha</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>This image tells you that the housing prices are very much related to the location (e.g., close to the ocean) and to the population density. Hence our <code>ocean_proximity</code> variable may be a useful predictor of our categorical price variable median housing prices, although in Northern California the housing prices in coastal districts are not too high, so it is not a simple rule.</p>
 </div>
 <div id="numerical-variables" class="section level3" number="2.8.3">
 <h3><span class="header-section-number">2.8.3</span> Numerical variables</h3>
 <p>We can use boxplots to check, if we actually find differences in our numeric variables for the different levels of our dependent <em>categorical variable</em>:</p>
-<pre class="r"><code class="hljs">data_explore %&gt;% 
+<pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = price_category, y = median_income, 
              fill = price_category, color = price_category)) +
-  geom_boxplot(alpha=<span class="hljs-number">0.4</span>) </code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-20-1.png" width="672"></p>
+  geom_boxplot(alpha=0.4) </code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Let`s define a function for this task that accepts strings as inputs so we don’t have to copy and paste our code for every plot. Note that we only have to change the “y-variable” in every plot.</p>
-<pre class="r"><code class="hljs">print_boxplot &lt;- <span class="hljs-keyword">function</span>(.y_var){
+<pre class="r"><code>print_boxplot &lt;- function(.y_var){
   
-  <span class="hljs-comment"># convert strings to variable</span>
+  # convert strings to variable
   y_var &lt;- sym(.y_var) 
  
-  <span class="hljs-comment"># unquote variables using {{}}</span>
+  # unquote variables using {{}}
   data_explore %&gt;% 
   ggplot(aes(x = price_category, y = {{y_var}},
              fill = price_category, color = price_category)) +
-  geom_boxplot(alpha=<span class="hljs-number">0.4</span>) 
+  geom_boxplot(alpha=0.4) 
   
 }  </code></pre>
 <p>Obtain all of the names of the y-variables we want to use for our plots:</p>
-<pre class="r"><code class="hljs">y_var &lt;- 
+<pre class="r"><code>y_var &lt;- 
   data_explore %&gt;% 
   select(where(is.numeric), -longitude, - latitude) %&gt;% 
-  variable.names() <span class="hljs-comment"># obtain name</span></code></pre>
+  variable.names() # obtain name</code></pre>
 <p>The map function applys the function <code>print_boxplot</code> to each element of our atomic vector <code>y_var</code> and returns the according plot:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(purrr)
+<pre class="r"><code>library(purrr)
 
 map(y_var, print_boxplot)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[1]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-1.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[2]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-2.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[3]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-3.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[4]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-4.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[5]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-5.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[6]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-6.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[7]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-7.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[8]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-8.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[9]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-23-9.png" width="672"></p>
+<pre><code>## [[1]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-3.png" width="672" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-4.png" width="672" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-5.png" width="672" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-6.png" width="672" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-7.png" width="672" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-8.png" width="672" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-9.png" width="672" /></p>
 <p>We can observe a difference in the price_category:</p>
 <ul>
 <li><p>The differences between our two groups are quite small for <code>housing_median_age</code>, <code>total_room</code>, <code>total_bedrooms</code>, <code>population</code> and <code>households</code></p></li>
@@ -2765,15 +2541,15 @@ map(y_var, print_boxplot)</code></pre>
 <li><p><code>population_per_household</code> and <code>rooms_per_household</code> include some extreme values We first need to fix this before we can proceed with our interpretations for this variabels.</p></li>
 </ul>
 <p>Again, let’s write a short function for this task and filter some of the extreme cases. We call the new function <code>print_boxplot_out</code>:</p>
-<pre class="r"><code class="hljs">print_boxplot_out &lt;- <span class="hljs-keyword">function</span>(.y_var_out){
+<pre class="r"><code>print_boxplot_out &lt;- function(.y_var_out){
   
   y_var &lt;- sym(.y_var_out) 
  
   data_explore %&gt;% 
-  filter(rooms_per_household &lt; <span class="hljs-number">50</span>, population_per_household &lt; <span class="hljs-number">20</span>) %&gt;% 
+  filter(rooms_per_household &lt; 50, population_per_household &lt; 20) %&gt;% 
   ggplot(aes(x = price_category, y = {{y_var}},
              fill = price_category, color = price_category)) +
-  geom_boxplot(alpha=<span class="hljs-number">0.4</span>) 
+  geom_boxplot(alpha=0.4) 
   
 } 
 
@@ -2783,22 +2559,22 @@ y_var_out &lt;-
   variable.names() 
 
 map(y_var_out, print_boxplot_out)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[1]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-24-1.png" width="672"></p>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [[2]]</span></span></code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-24-2.png" width="672"></p>
+<pre><code>## [[1]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
 <p>Now we are able to recognize a small difference for <code>population_per_household</code>. <code>rooms_per_household</code> on the other hand is quite similar for both groups.</p>
 <p>Additionally, we can use the function <code>ggscatmat</code> to create plots with our dependent variable as color column:</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(GGally)
+<pre class="r"><code>library(GGally)
 
 data_explore %&gt;% 
   select(price_category, median_income, bedrooms_per_room, rooms_per_household, 
          population_per_household) %&gt;% 
-  ggscatmat(color=<span class="hljs-string">"price_category"</span>, 
-            corMethod = <span class="hljs-string">"spearman"</span>,
-            alpha=<span class="hljs-number">0.2</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-25-1.png" width="672"></p>
+  ggscatmat(color=&quot;price_category&quot;, 
+            corMethod = &quot;spearman&quot;,
+            alpha=0.2)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>There are a few things you might notice in these histograms:</p>
 <ul>
 <li><p>Note that our attributes have very different scales. We will take care of this issue later in data preparation, when we use feature scaling (data normalization).</p></li>
@@ -2815,26 +2591,26 @@ data_explore %&gt;%
 <div id="categorical-variables" class="section level3" number="2.8.4">
 <h3><span class="header-section-number">2.8.4</span> Categorical variables</h3>
 <p>Now let’s analyze the relationship between our categorical variables <code>ocean proximity</code> and <code>price_category</code>. We start with a simple count.</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(gt)
+<pre class="r"><code>library(gt)
 
 data_explore %&gt;% 
   count(price_category, ocean_proximity) %&gt;% 
   group_by(price_category) %&gt;% 
-  mutate(percent = n / sum(n) *<span class="hljs-number">100</span>,
-         percent = round(percent, <span class="hljs-number">2</span>)) %&gt;% 
+  mutate(percent = n / sum(n) *100,
+         percent = round(percent, 2)) %&gt;% 
   gt() %&gt;% 
     tab_header(
-    title = <span class="hljs-string">"California median house prices"</span>,
-    subtitle = <span class="hljs-string">"Districts above and below 150.000$"</span>
+    title = &quot;California median house prices&quot;,
+    subtitle = &quot;Districts above and below 150.000$&quot;
   ) %&gt;% 
   cols_label(
-    ocean_proximity = <span class="hljs-string">"Ocean Proximity"</span>,
-    n = <span class="hljs-string">"Districts"</span>,
-    percent = <span class="hljs-string">"Percent"</span>
+    ocean_proximity = &quot;Ocean Proximity&quot;,
+    n = &quot;Districts&quot;,
+    percent = &quot;Percent&quot;
   ) %&gt;% 
   fmt_number(
     columns = vars(n),
-    suffixing = <span class="hljs-literal">TRUE</span>
+    suffixing = TRUE
   ) </code></pre>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -3175,10 +2951,10 @@ data_explore %&gt;%
 <div id="xmjcfzubex" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
-      <th colspan="3" class="gt_heading gt_title gt_font_normal" style="">California median house prices</th>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>California median house prices</th>
     </tr>
     <tr>
-      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Districts above and below 150.000$</th>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Districts above and below 150.000$</th>
     </tr>
   </thead>
   <thead class="gt_col_headings">
@@ -3246,11 +3022,11 @@ data_explore %&gt;%
 </table></div>
 <p><br></p>
 <p>The function <code>geom_bin2d()</code> creats a heatmap by counting the number of cases in each group, and then mapping the number of cases to each subgroub’s fill.</p>
-<pre class="r"><code class="hljs">data_explore %&gt;%
+<pre class="r"><code>data_explore %&gt;%
   ggplot(aes(price_category, ocean_proximity)) +
   geom_bin2d() +
-  scale_fill_continuous(type = <span class="hljs-string">"viridis"</span>) </code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-27-1.png" width="672"></p>
+  scale_fill_continuous(type = &quot;viridis&quot;) </code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>We can observe that most districts with a median house price above 150,000 have an ocean proximity below 1 hour. On the other hand, districts below that threshold are typically inland. Hence, ocean proximity is indeed a good predictor for our two different median house value categories.</p>
 </div>
 </div>
@@ -3260,7 +3036,7 @@ data_explore %&gt;%
 <p>Data preparation:</p>
 <ul>
 <li>Handle missing values</li>
-<li>Fix or remove outliers<br>
+<li>Fix or remove outliers<br />
 </li>
 <li>Feature selection</li>
 <li>Feature engineering</li>
@@ -3278,9 +3054,9 @@ data_explore %&gt;%
 <div id="data-preparation-1" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Data preparation</h2>
 <p>Before we create our <code>recipes</code>, we first select the variables which we will use in the model. Note that we keep <code>longitude</code> and <code>latitude</code> to be able to map the data in a later stage but we will not use the variables in our model.</p>
-<pre class="r"><code class="hljs">housing_df_new &lt;-
+<pre class="r"><code>housing_df_new &lt;-
   housing_df %&gt;% 
-  select( <span class="hljs-comment"># select our predictors</span>
+  select( # select our predictors
     longitude, latitude, 
     price_category, 
     median_income, 
@@ -3291,21 +3067,21 @@ data_explore %&gt;%
          )
 
 glimpse(housing_df_new)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Rows: 20,640</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Columns: 8</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ longitude                &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, …</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ latitude                 &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ price_category           &lt;fct&gt; above, above, above, above, above, above, abo…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ median_income            &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.036…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ ocean_proximity          &lt;fct&gt; NEAR BAY, NEAR BAY, NEAR BAY, NEAR BAY, NEAR …</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ bedrooms_per_room        &lt;dbl&gt; 0.1465909, 0.1557966, 0.1295160, 0.1844584, 0…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ rooms_per_household      &lt;dbl&gt; 6.984127, 6.238137, 8.288136, 5.817352, 6.281…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ population_per_household &lt;dbl&gt; 2.555556, 2.109842, 2.802260, 2.547945, 2.181…</span></span></code></pre>
+<pre><code>## Rows: 20,640
+## Columns: 8
+## $ longitude                &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, …
+## $ latitude                 &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.…
+## $ price_category           &lt;fct&gt; above, above, above, above, above, above, abo…
+## $ median_income            &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.036…
+## $ ocean_proximity          &lt;fct&gt; NEAR BAY, NEAR BAY, NEAR BAY, NEAR BAY, NEAR …
+## $ bedrooms_per_room        &lt;dbl&gt; 0.1465909, 0.1557966, 0.1295160, 0.1844584, 0…
+## $ rooms_per_household      &lt;dbl&gt; 6.984127, 6.238137, 8.288136, 5.817352, 6.281…
+## $ population_per_household &lt;dbl&gt; 2.555556, 2.109842, 2.802260, 2.547945, 2.181…</code></pre>
 <p>Furthermore, we need to make a new data split since we updated the original data.</p>
-<pre class="r"><code class="hljs">set.seed(<span class="hljs-number">123</span>)
+<pre class="r"><code>set.seed(123)
 
-data_split &lt;- initial_split(housing_df_new, <span class="hljs-comment"># updated data</span>
-                           prop = <span class="hljs-number">3</span>/<span class="hljs-number">4</span>, 
+data_split &lt;- initial_split(housing_df_new, # updated data
+                           prop = 3/4, 
                            strata = price_category)
 
 train_data &lt;- training(data_split) 
@@ -3326,14 +3102,14 @@ test_data &lt;- testing(data_split)</code></pre>
 </ul>
 <p>Note that instead of deleting missing values we could also easily substitute (i.e., <em>impute</em>) missing values of variables by one of the following methods (using the training set):</p>
 <ul>
-<li><a href="https://recipes.tidymodels.org/reference/step_medianimpute.html">median</a>,<br>
+<li><a href="https://recipes.tidymodels.org/reference/step_medianimpute.html">median</a>,<br />
 </li>
-<li><a href="https://recipes.tidymodels.org/reference/step_meanimpute.html">mean</a>,<br>
+<li><a href="https://recipes.tidymodels.org/reference/step_meanimpute.html">mean</a>,<br />
 </li>
 <li><a href="https://recipes.tidymodels.org/reference/step_modeimpute.html">mode</a>,</li>
-<li><a href="https://recipes.tidymodels.org/reference/step_knnimpute.html">k-nearest neighbors</a>,<br>
+<li><a href="https://recipes.tidymodels.org/reference/step_knnimpute.html">k-nearest neighbors</a>,<br />
 </li>
-<li><a href="https://recipes.tidymodels.org/reference/step_impute_linear.html">linear model</a>,<br>
+<li><a href="https://recipes.tidymodels.org/reference/step_impute_linear.html">linear model</a>,<br />
 </li>
 <li><a href="https://recipes.tidymodels.org/reference/step_bagimpute.html">bagged tree models</a></li>
 </ul>
@@ -3349,65 +3125,65 @@ test_data &lt;- testing(data_split)</code></pre>
 <li><p><code>step_zv()</code>: removes any numeric variables that have zero variance.</p></li>
 <li><p><code>step_corr()</code>: will remove predictor variables that have large correlations with other predictor variables.</p></li>
 </ul>
-<p>Note that the package <a href="https://themis.tidymodels.org/index.html"><code>themis</code></a> contains extra steps for the <code>recipes</code> package for dealing with <strong>imbalanced data</strong>. A classification data set with skewed class proportions is called imbalanced. Classes that make up a large proportion of the data set are called majority classes. Those that make up a smaller proportion are minority classes (see <a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data">Google Developers</a> for more details). <code>Themis</code> provides various methods for over-sampling (e.g.&nbsp;SMOTE) and under-sampling. However, we don’t have to use this methods since our data is not imbalanced.</p>
-<pre class="r"><code class="hljs">housing_rec &lt;-
+<p>Note that the package <a href="https://themis.tidymodels.org/index.html"><code>themis</code></a> contains extra steps for the <code>recipes</code> package for dealing with <strong>imbalanced data</strong>. A classification data set with skewed class proportions is called imbalanced. Classes that make up a large proportion of the data set are called majority classes. Those that make up a smaller proportion are minority classes (see <a href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data">Google Developers</a> for more details). <code>Themis</code> provides various methods for over-sampling (e.g. SMOTE) and under-sampling. However, we don’t have to use this methods since our data is not imbalanced.</p>
+<pre class="r"><code>housing_rec &lt;-
   recipe(price_category ~ .,
          data = train_data) %&gt;%
   update_role(longitude, latitude, 
-              new_role = <span class="hljs-string">"ID"</span>) %&gt;% 
+              new_role = &quot;ID&quot;) %&gt;% 
   step_log(
     median_income,
     bedrooms_per_room, rooms_per_household, 
     population_per_household
     ) %&gt;% 
-  step_naomit(everything(), skip = <span class="hljs-literal">TRUE</span>) %&gt;% 
+  step_naomit(everything(), skip = TRUE) %&gt;% 
   step_novel(all_nominal(), -all_outcomes()) %&gt;%
   step_normalize(all_numeric(), -all_outcomes(), 
                  -longitude, -latitude) %&gt;% 
   step_dummy(all_nominal(), -all_outcomes()) %&gt;%
   step_zv(all_numeric(), -all_outcomes()) %&gt;%
-  step_corr(all_predictors(), threshold = <span class="hljs-number">0.7</span>, method = <span class="hljs-string">"spearman"</span>) </code></pre>
+  step_corr(all_predictors(), threshold = 0.7, method = &quot;spearman&quot;) </code></pre>
 <p>To view the current set of variables and roles, use the <code>summary()</code> function:</p>
-<pre class="r"><code class="hljs">summary(housing_rec)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 4</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   variable                 type    role      source  </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;                    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 longitude                numeric ID        original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 latitude                 numeric ID        original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 median_income            numeric predictor original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 ocean_proximity          nominal predictor original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 bedrooms_per_room        numeric predictor original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 rooms_per_household      numeric predictor original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 population_per_household numeric predictor original</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 price_category           nominal outcome   original</span></span></code></pre>
+<pre class="r"><code>summary(housing_rec)</code></pre>
+<pre><code>## # A tibble: 8 x 4
+##   variable                 type    role      source  
+##   &lt;chr&gt;                    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
+## 1 longitude                numeric ID        original
+## 2 latitude                 numeric ID        original
+## 3 median_income            numeric predictor original
+## 4 ocean_proximity          nominal predictor original
+## 5 bedrooms_per_room        numeric predictor original
+## 6 rooms_per_household      numeric predictor original
+## 7 population_per_household numeric predictor original
+## 8 price_category           nominal outcome   original</code></pre>
 <p>If we would like to check if all of our preprocessing steps from above actually worked, we can proceed as follows:</p>
-<pre class="r"><code class="hljs">prepped_data &lt;- 
-  housing_rec %&gt;% <span class="hljs-comment"># use the recipe object</span>
-  prep() %&gt;% <span class="hljs-comment"># perform the recipe on training data</span>
-  juice() <span class="hljs-comment"># extract only the preprocessed dataframe </span></code></pre>
+<pre class="r"><code>prepped_data &lt;- 
+  housing_rec %&gt;% # use the recipe object
+  prep() %&gt;% # perform the recipe on training data
+  juice() # extract only the preprocessed dataframe </code></pre>
 <p>Take a look at the data structure:</p>
-<pre class="r"><code class="hljs">glimpse(prepped_data)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Rows: 15,317</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Columns: 10</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ longitude                  &lt;dbl&gt; -122.22, -122.24, -122.25, -122.25, -122.25…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ latitude                   &lt;dbl&gt; 37.86, 37.85, 37.85, 37.85, 37.84, 37.84, 3…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ median_income              &lt;dbl&gt; 1.8483941, 1.5639024, 1.0313625, 0.3223031,…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ rooms_per_household        &lt;dbl&gt; 0.676801762, 1.719249869, 0.420589933, -0.3…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ population_per_household   &lt;dbl&gt; -1.07327656, -0.04202316, -0.38771664, -1.0…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ price_category             &lt;fct&gt; above, above, above, above, above, above, a…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ ocean_proximity_INLAND     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ ocean_proximity_ISLAND     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ ocean_proximity_NEAR.BAY   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># $ ocean_proximity_NEAR.OCEAN &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span></span></code></pre>
+<pre class="r"><code>glimpse(prepped_data)</code></pre>
+<pre><code>## Rows: 15,317
+## Columns: 10
+## $ longitude                  &lt;dbl&gt; -122.22, -122.24, -122.25, -122.25, -122.25…
+## $ latitude                   &lt;dbl&gt; 37.86, 37.85, 37.85, 37.85, 37.84, 37.84, 3…
+## $ median_income              &lt;dbl&gt; 1.8483941, 1.5639024, 1.0313625, 0.3223031,…
+## $ rooms_per_household        &lt;dbl&gt; 0.676801762, 1.719249869, 0.420589933, -0.3…
+## $ population_per_household   &lt;dbl&gt; -1.07327656, -0.04202316, -0.38771664, -1.0…
+## $ price_category             &lt;fct&gt; above, above, above, above, above, above, a…
+## $ ocean_proximity_INLAND     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ ocean_proximity_ISLAND     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ ocean_proximity_NEAR.BAY   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ ocean_proximity_NEAR.OCEAN &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</code></pre>
 <p>Visualize the numerical data:</p>
-<pre class="r"><code class="hljs">prepped_data %&gt;% 
+<pre class="r"><code>prepped_data %&gt;% 
   select(price_category, 
          median_income, 
          rooms_per_household, 
          population_per_household) %&gt;% 
-  ggscatmat(corMethod = <span class="hljs-string">"spearman"</span>,
-            alpha=<span class="hljs-number">0.2</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-34-1.png" width="672"></p>
+  ggscatmat(corMethod = &quot;spearman&quot;,
+            alpha=0.2)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>You should notice that:</p>
 <ul>
 <li><p>the variables <code>longitude</code> and <code>latitude</code> did not change.</p></li>
@@ -3420,11 +3196,11 @@ test_data &lt;- testing(data_split)</code></pre>
 <p>Remember that we already partitioned our data set into a <em>training set</em> and <em>test set</em>. This lets us judge whether a given model will generalize well to new data. However, using only two partitions may be insufficient when doing many rounds of hyperparameter tuning (which we don’t perform in this tutorial but it is always recommended to use a validation set).</p>
 <p>Therefore, it is usually a good idea to create a so called <code>validation set</code>. Watch this short <a href="https://developers.google.com/machine-learning/crash-course/validation/video-lecture">video from Google’s Machine Learning crash course</a> to learn more about the value of a validation set.</p>
 <p>We use k-fold crossvalidation to build a set of 5 validation folds with the function <code>vfold_cv</code>. We also use stratified sampling:</p>
-<pre class="r"><code class="hljs">set.seed(<span class="hljs-number">100</span>)
+<pre class="r"><code>set.seed(100)
 
 cv_folds &lt;-
  vfold_cv(train_data, 
-          v = <span class="hljs-number">5</span>, 
+          v = 5, 
           strata = price_category) </code></pre>
 <p>We will come back to the <em>validation set</em> after we specified our models.</p>
 </div>
@@ -3442,92 +3218,92 @@ cv_folds &lt;-
 <p>You can choose the <code>model type</code> and <code>engine</code> from this <a href="https://www.tidymodels.org/find/parsnip/">list</a>.</p>
 <div id="logistic-regression" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Logistic regression</h3>
-<pre class="r"><code class="hljs">log_spec &lt;- <span class="hljs-comment"># your model specification</span>
-  logistic_reg() %&gt;%  <span class="hljs-comment"># model type</span>
-  set_engine(engine = <span class="hljs-string">"glm"</span>) %&gt;%  <span class="hljs-comment"># model engine</span>
-  set_mode(<span class="hljs-string">"classification"</span>) <span class="hljs-comment"># model mode</span>
+<pre class="r"><code>log_spec &lt;- # your model specification
+  logistic_reg() %&gt;%  # model type
+  set_engine(engine = &quot;glm&quot;) %&gt;%  # model engine
+  set_mode(&quot;classification&quot;) # model mode
 
-<span class="hljs-comment"># Show your model specification</span>
+# Show your model specification
 log_spec</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Logistic Regression Model Specification (classification)</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Computational engine: glm</span></span></code></pre>
+<pre><code>## Logistic Regression Model Specification (classification)
+## 
+## Computational engine: glm</code></pre>
 </div>
 <div id="random-forest" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Random forest</h3>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(ranger)
+<pre class="r"><code>library(ranger)
 
 rf_spec &lt;- 
   rand_forest() %&gt;% 
-  set_engine(<span class="hljs-string">"ranger"</span>, importance = <span class="hljs-string">"impurity"</span>) %&gt;% 
-  set_mode(<span class="hljs-string">"classification"</span>)</code></pre>
+  set_engine(&quot;ranger&quot;, importance = &quot;impurity&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)</code></pre>
 <p>When we set the engine, we add <code>importance = "impurity"</code>. This will provide variable importance scores for this model, which gives some insight into which predictors drive model performance.</p>
 </div>
 <div id="boosted-tree-xgboost" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Boosted tree (XGBoost)</h3>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(xgboost)
+<pre class="r"><code>library(xgboost)
 
 xgb_spec &lt;- 
   boost_tree() %&gt;% 
-  set_engine(<span class="hljs-string">"xgboost"</span>) %&gt;% 
-  set_mode(<span class="hljs-string">"classification"</span>) </code></pre>
+  set_engine(&quot;xgboost&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;) </code></pre>
 </div>
 <div id="k-nearest-neighbor" class="section level3" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> K-nearest neighbor</h3>
-<pre class="r"><code class="hljs">knn_spec &lt;- 
-  nearest_neighbor(neighbors = <span class="hljs-number">4</span>) %&gt;% <span class="hljs-comment"># we can adjust the number of neighbors </span>
-  set_engine(<span class="hljs-string">"kknn"</span>) %&gt;% 
-  set_mode(<span class="hljs-string">"classification"</span>) </code></pre>
+<pre class="r"><code>knn_spec &lt;- 
+  nearest_neighbor(neighbors = 4) %&gt;% # we can adjust the number of neighbors 
+  set_engine(&quot;kknn&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;) </code></pre>
 </div>
 <div id="neural-network" class="section level3" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> Neural network</h3>
 <p>To use the neural network model, you will need to install the following packages: <code>keras</code>. You will also need the python keras library installed (see <code>?keras::install_keras()</code>).</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(keras)
+<pre class="r"><code>library(keras)
 
 nnet_spec &lt;-
   mlp() %&gt;%
-  set_mode(<span class="hljs-string">"classification"</span>) %&gt;% 
-  set_engine(<span class="hljs-string">"keras"</span>, verbose = <span class="hljs-number">0</span>) </code></pre>
+  set_mode(&quot;classification&quot;) %&gt;% 
+  set_engine(&quot;keras&quot;, verbose = 0) </code></pre>
 <p>We set the engine-specific <code>verbose</code> argument to prevent logging the results.</p>
 </div>
 </div>
 <div id="create-workflows" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Create workflows</h2>
-<p>To combine the data preparation recipe with the model building, we use the package <a href="https://workflows.tidymodels.org/">workflows</a>. A workflow is an object that can bundle together your pre-processing recipe, modeling, and even post-processing requests (like calculating the RMSE).</p>
+<p>To combine the data preparation recipe with the model building, we use the package <a href="https://workflows.tidymodels.org">workflows</a>. A workflow is an object that can bundle together your pre-processing recipe, modeling, and even post-processing requests (like calculating the RMSE).</p>
 <div id="logistic-regression-1" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Logistic regression</h3>
 <p>Bundle recipe and model with <code>workflows</code>:</p>
-<pre class="r"><code class="hljs">log_wflow &lt;- <span class="hljs-comment"># new workflow object</span>
- workflow() %&gt;% <span class="hljs-comment"># use workflow function</span>
- add_recipe(housing_rec) %&gt;%   <span class="hljs-comment"># use the new recipe</span>
- add_model(log_spec)   <span class="hljs-comment"># add your model spec</span>
+<pre class="r"><code>log_wflow &lt;- # new workflow object
+ workflow() %&gt;% # use workflow function
+ add_recipe(housing_rec) %&gt;%   # use the new recipe
+ add_model(log_spec)   # add your model spec
 
-<span class="hljs-comment"># show object</span>
+# show object
 log_wflow</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ══ Workflow ════════════════════════════════════════════════════════════════════</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Preprocessor: Recipe</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Model: logistic_reg()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ── Preprocessor ────────────────────────────────────────────────────────────────</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 Recipe Steps</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_log()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_naomit()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_novel()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_normalize()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_dummy()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_zv()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># • step_corr()</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ── Model ───────────────────────────────────────────────────────────────────────</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Logistic Regression Model Specification (classification)</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Computational engine: glm</span></span></code></pre>
+<pre><code>## ══ Workflow ════════════════════════════════════════════════════════════════════
+## Preprocessor: Recipe
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## 7 Recipe Steps
+## 
+## • step_log()
+## • step_naomit()
+## • step_novel()
+## • step_normalize()
+## • step_dummy()
+## • step_zv()
+## • step_corr()
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## Logistic Regression Model Specification (classification)
+## 
+## Computational engine: glm</code></pre>
 </div>
 <div id="random-forest-1" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Random forest</h3>
 <p>Bundle recipe and model:</p>
-<pre class="r"><code class="hljs">rf_wflow &lt;-
+<pre class="r"><code>rf_wflow &lt;-
  workflow() %&gt;%
  add_recipe(housing_rec) %&gt;% 
  add_model(rf_spec) </code></pre>
@@ -3535,7 +3311,7 @@ log_wflow</code></pre>
 <div id="xgboost" class="section level3" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> XGBoost</h3>
 <p>Bundle recipe and model:</p>
-<pre class="r"><code class="hljs">xgb_wflow &lt;-
+<pre class="r"><code>xgb_wflow &lt;-
  workflow() %&gt;%
  add_recipe(housing_rec) %&gt;% 
  add_model(xgb_spec)</code></pre>
@@ -3543,7 +3319,7 @@ log_wflow</code></pre>
 <div id="k-nearest-neighbor-1" class="section level3" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> K-nearest neighbor</h3>
 <p>Bundle recipe and model:</p>
-<pre class="r"><code class="hljs">knn_wflow &lt;-
+<pre class="r"><code>knn_wflow &lt;-
  workflow() %&gt;%
  add_recipe(housing_rec) %&gt;% 
  add_model(knn_spec)</code></pre>
@@ -3551,7 +3327,7 @@ log_wflow</code></pre>
 <div id="neural-network-1" class="section level3" number="4.2.5">
 <h3><span class="header-section-number">4.2.5</span> Neural network</h3>
 <p>Bundle recipe and model:</p>
-<pre class="r"><code class="hljs">nnet_wflow &lt;-
+<pre class="r"><code>nnet_wflow &lt;-
  workflow() %&gt;%
  add_recipe(housing_rec) %&gt;% 
  add_model(nnet_spec)</code></pre>
@@ -3567,7 +3343,7 @@ log_wflow</code></pre>
 <p>We use our workflow object to perform resampling. Furthermore, we use
 <code>metric_set()</code>to choose some common classification performance metrics provided by the <code>yardstick</code> package. Visit <a href="https://yardstick.tidymodels.org/reference/index.html"><code>yardsticks</code> reference</a> to see the complete list of all possible metrics.</p>
 <p>Note that Cohen’s <em>kappa</em> coefficient (κ) is a similar measure to accuracy, but is normalized by the accuracy that would be expected by chance alone and is very useful when one or more classes have large frequency distributions. The higher the value, the better.</p>
-<pre class="r"><code class="hljs">log_res &lt;- 
+<pre class="r"><code>log_res &lt;- 
   log_wflow %&gt;% 
   fit_resamples(
     resamples = cv_folds, 
@@ -3576,18 +3352,18 @@ log_wflow</code></pre>
       accuracy, kap,
       roc_auc, sens, spec),
     control = control_resamples(
-      save_pred = <span class="hljs-literal">TRUE</span>)
+      save_pred = TRUE)
     ) </code></pre>
 <div id="model-coefficients" class="section level4" number="4.3.1.1">
 <h4><span class="header-section-number">4.3.1.1</span> Model coefficients</h4>
 <p>The above described method to obtain <code>log_res</code> is fine if we are not interested in model coefficients. However, if we would like to extract the model coeffcients from <code>fit_resamples</code>, we need to proceed as follows:</p>
-<pre class="r"><code class="hljs"><span class="hljs-comment"># save model coefficients for a fitted model object from a workflow</span>
+<pre class="r"><code># save model coefficients for a fitted model object from a workflow
 
-get_model &lt;- <span class="hljs-keyword">function</span>(x) {
+get_model &lt;- function(x) {
   pull_workflow_fit(x) %&gt;% tidy()
 }
 
-<span class="hljs-comment"># same as before with one exception</span>
+# same as before with one exception
 log_res_2 &lt;- 
   log_wflow %&gt;% 
   fit_resamples(
@@ -3597,126 +3373,126 @@ log_res_2 &lt;-
       accuracy, kap,
       roc_auc, sens, spec),
     control = control_resamples(
-      save_pred = <span class="hljs-literal">TRUE</span>,
-      extract = get_model) <span class="hljs-comment"># use extract and our new function</span>
+      save_pred = TRUE,
+      extract = get_model) # use extract and our new function
     ) </code></pre>
 <p>Now there is a <code>.extracts</code> column with nested tibbles.</p>
-<pre class="r"><code class="hljs">log_res_2$.extracts[[<span class="hljs-number">1</span>]]</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 1 x 2</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .extracts            .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;list&gt;               &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 &lt;tibble[,5] [8 × 5]&gt; Preprocessor1_Model1</span></span></code></pre>
+<pre class="r"><code>log_res_2$.extracts[[1]]</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   .extracts            .config             
+##   &lt;list&gt;               &lt;chr&gt;               
+## 1 &lt;tibble[,5] [8 × 5]&gt; Preprocessor1_Model1</code></pre>
 <p>To get the results use:</p>
-<pre class="r"><code class="hljs">log_res_2$.extracts[[<span class="hljs-number">1</span>]][[<span class="hljs-number">1</span>]]</code></pre>
-<pre><code class="hljs css">## <span class="hljs-selector-attr">[[1]</span>]
-## # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">tibble</span>: 8 <span class="hljs-selector-tag">x</span> 5
-##   <span class="hljs-selector-tag">term</span>                       <span class="hljs-selector-tag">estimate</span> <span class="hljs-selector-tag">std</span><span class="hljs-selector-class">.error</span> <span class="hljs-selector-tag">statistic</span>  <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.value</span>
-##   &lt;<span class="hljs-selector-tag">chr</span>&gt;                         &lt;<span class="hljs-selector-tag">dbl</span>&gt;     &lt;<span class="hljs-selector-tag">dbl</span>&gt;     &lt;<span class="hljs-selector-tag">dbl</span>&gt;    &lt;<span class="hljs-selector-tag">dbl</span>&gt;
-## 1 (<span class="hljs-selector-tag">Intercept</span>)                  <span class="hljs-selector-tag">-2</span><span class="hljs-selector-class">.02</span>     0<span class="hljs-selector-class">.0510</span>  <span class="hljs-selector-tag">-39</span><span class="hljs-selector-class">.6</span>    0       
-## 2 <span class="hljs-selector-tag">median_income</span>                <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.91</span>     0<span class="hljs-selector-class">.0470</span>  <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.6</span>    0       
-## 3 <span class="hljs-selector-tag">rooms_per_household</span>           0<span class="hljs-selector-class">.252</span>    0<span class="hljs-selector-class">.0376</span>    6<span class="hljs-selector-class">.70</span>   2<span class="hljs-selector-class">.14e-11</span>
-## 4 <span class="hljs-selector-tag">population_per_household</span>      0<span class="hljs-selector-class">.485</span>    0<span class="hljs-selector-class">.0297</span>   16<span class="hljs-selector-class">.3</span>    7<span class="hljs-selector-class">.36e-60</span>
-## 5 <span class="hljs-selector-tag">ocean_proximity_INLAND</span>        2<span class="hljs-selector-class">.92</span>     0<span class="hljs-selector-class">.0729</span>   40<span class="hljs-selector-class">.0</span>    0       
-## 6 <span class="hljs-selector-tag">ocean_proximity_ISLAND</span>      <span class="hljs-selector-tag">-11</span><span class="hljs-selector-class">.4</span>    160.       <span class="hljs-selector-tag">-0</span><span class="hljs-selector-class">.0714</span> 9<span class="hljs-selector-class">.43e-</span> 1
-## 7 <span class="hljs-selector-tag">ocean_proximity_NEAR</span><span class="hljs-selector-class">.BAY</span>      0<span class="hljs-selector-class">.386</span>    0<span class="hljs-selector-class">.0991</span>    3<span class="hljs-selector-class">.90</span>   9<span class="hljs-selector-class">.60e-</span> 5
-## 8 <span class="hljs-selector-tag">ocean_proximity_NEAR</span><span class="hljs-selector-class">.OCEAN</span>    0<span class="hljs-selector-class">.631</span>    0<span class="hljs-selector-class">.0871</span>    7<span class="hljs-selector-class">.24</span>   4<span class="hljs-selector-class">.34e-13</span></code></pre>
+<pre class="r"><code>log_res_2$.extracts[[1]][[1]]</code></pre>
+<pre><code>## [[1]]
+## # A tibble: 8 x 5
+##   term                       estimate std.error statistic  p.value
+##   &lt;chr&gt;                         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)                  -2.02     0.0510  -39.6    0       
+## 2 median_income                -1.91     0.0470  -40.6    0       
+## 3 rooms_per_household           0.252    0.0376    6.70   2.14e-11
+## 4 population_per_household      0.485    0.0297   16.3    7.36e-60
+## 5 ocean_proximity_INLAND        2.92     0.0729   40.0    0       
+## 6 ocean_proximity_ISLAND      -11.4    160.       -0.0714 9.43e- 1
+## 7 ocean_proximity_NEAR.BAY      0.386    0.0991    3.90   9.60e- 5
+## 8 ocean_proximity_NEAR.OCEAN    0.631    0.0871    7.24   4.34e-13</code></pre>
 <p>All of the results can be flattened and collected using:</p>
-<pre class="r"><code class="hljs">all_coef &lt;- map_dfr(log_res_2$.extracts, ~ .x[[<span class="hljs-number">1</span>]][[<span class="hljs-number">1</span>]])</code></pre>
+<pre class="r"><code>all_coef &lt;- map_dfr(log_res_2$.extracts, ~ .x[[1]][[1]])</code></pre>
 <p>Show all of the resample coefficients for a single predictor:</p>
-<pre class="r"><code class="hljs">filter(all_coef, term == <span class="hljs-string">"median_income"</span>)</code></pre>
-<pre><code class="hljs css">## # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">tibble</span>: 5 <span class="hljs-selector-tag">x</span> 5
-##   <span class="hljs-selector-tag">term</span>          <span class="hljs-selector-tag">estimate</span> <span class="hljs-selector-tag">std</span><span class="hljs-selector-class">.error</span> <span class="hljs-selector-tag">statistic</span> <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.value</span>
-##   &lt;<span class="hljs-selector-tag">chr</span>&gt;            &lt;<span class="hljs-selector-tag">dbl</span>&gt;     &lt;<span class="hljs-selector-tag">dbl</span>&gt;     &lt;<span class="hljs-selector-tag">dbl</span>&gt;   &lt;<span class="hljs-selector-tag">dbl</span>&gt;
-## 1 <span class="hljs-selector-tag">median_income</span>    <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.91</span>    0<span class="hljs-selector-class">.0470</span>     <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.6</span>       0
-## 2 <span class="hljs-selector-tag">median_income</span>    <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.91</span>    0<span class="hljs-selector-class">.0469</span>     <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.6</span>       0
-## 3 <span class="hljs-selector-tag">median_income</span>    <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.89</span>    0<span class="hljs-selector-class">.0469</span>     <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.4</span>       0
-## 4 <span class="hljs-selector-tag">median_income</span>    <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.96</span>    0<span class="hljs-selector-class">.0480</span>     <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.8</span>       0
-## 5 <span class="hljs-selector-tag">median_income</span>    <span class="hljs-selector-tag">-1</span><span class="hljs-selector-class">.90</span>    0<span class="hljs-selector-class">.0468</span>     <span class="hljs-selector-tag">-40</span><span class="hljs-selector-class">.5</span>       0</code></pre>
+<pre class="r"><code>filter(all_coef, term == &quot;median_income&quot;)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   term          estimate std.error statistic p.value
+##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 median_income    -1.91    0.0470     -40.6       0
+## 2 median_income    -1.91    0.0469     -40.6       0
+## 3 median_income    -1.89    0.0469     -40.4       0
+## 4 median_income    -1.96    0.0480     -40.8       0
+## 5 median_income    -1.90    0.0468     -40.5       0</code></pre>
 </div>
 <div id="performance-metrics" class="section level4" number="4.3.1.2">
 <h4><span class="header-section-number">4.3.1.2</span> Performance metrics</h4>
 <p>Show average performance over all folds (note that we use <code>log_res</code>):</p>
-<pre class="r"><code class="hljs">log_res %&gt;%  collect_metrics(summarize = <span class="hljs-literal">TRUE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 6</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .metric   .estimator  mean     n  std_err .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 accuracy  binary     0.849     5 0.00283  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 f_meas    binary     0.883     5 0.00243  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 kap       binary     0.672     5 0.00569  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 precision binary     0.871     5 0.000987 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 recall    binary     0.896     5 0.00430  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 roc_auc   binary     0.918     5 0.00117  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 sens      binary     0.896     5 0.00430  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 spec      binary     0.770     5 0.00162  Preprocessor1_Model1</span></span></code></pre>
+<pre class="r"><code>log_res %&gt;%  collect_metrics(summarize = TRUE)</code></pre>
+<pre><code>## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n  std_err .config             
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy  binary     0.849     5 0.00283  Preprocessor1_Model1
+## 2 f_meas    binary     0.883     5 0.00243  Preprocessor1_Model1
+## 3 kap       binary     0.672     5 0.00569  Preprocessor1_Model1
+## 4 precision binary     0.871     5 0.000987 Preprocessor1_Model1
+## 5 recall    binary     0.896     5 0.00430  Preprocessor1_Model1
+## 6 roc_auc   binary     0.918     5 0.00117  Preprocessor1_Model1
+## 7 sens      binary     0.896     5 0.00430  Preprocessor1_Model1
+## 8 spec      binary     0.770     5 0.00162  Preprocessor1_Model1</code></pre>
 <p>Show performance for every single fold:</p>
-<pre class="r"><code class="hljs">log_res %&gt;%  collect_metrics(summarize = <span class="hljs-literal">FALSE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 40 x 5</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#    id    .metric   .estimator .estimate .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  1 Fold1 recall    binary         0.886 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  2 Fold1 precision binary         0.868 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  3 Fold1 f_meas    binary         0.877 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  4 Fold1 accuracy  binary         0.842 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  5 Fold1 kap       binary         0.658 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  6 Fold1 sens      binary         0.886 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  7 Fold1 spec      binary         0.766 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  8 Fold1 roc_auc   binary         0.914 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#  9 Fold2 recall    binary         0.907 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 10 Fold2 precision binary         0.874 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # … with 30 more rows</span></span></code></pre>
+<pre class="r"><code>log_res %&gt;%  collect_metrics(summarize = FALSE)</code></pre>
+<pre><code>## # A tibble: 40 x 5
+##    id    .metric   .estimator .estimate .config             
+##    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+##  1 Fold1 recall    binary         0.886 Preprocessor1_Model1
+##  2 Fold1 precision binary         0.868 Preprocessor1_Model1
+##  3 Fold1 f_meas    binary         0.877 Preprocessor1_Model1
+##  4 Fold1 accuracy  binary         0.842 Preprocessor1_Model1
+##  5 Fold1 kap       binary         0.658 Preprocessor1_Model1
+##  6 Fold1 sens      binary         0.886 Preprocessor1_Model1
+##  7 Fold1 spec      binary         0.766 Preprocessor1_Model1
+##  8 Fold1 roc_auc   binary         0.914 Preprocessor1_Model1
+##  9 Fold2 recall    binary         0.907 Preprocessor1_Model1
+## 10 Fold2 precision binary         0.874 Preprocessor1_Model1
+## # … with 30 more rows</code></pre>
 </div>
 <div id="collect-predictions" class="section level4" number="4.3.1.3">
 <h4><span class="header-section-number">4.3.1.3</span> Collect predictions</h4>
 <p>To obtain the actual model predictions, we use the function <code>collect_predictions</code> and save the result as <code>log_pred</code>:</p>
-<pre class="r"><code class="hljs">log_pred &lt;- 
+<pre class="r"><code>log_pred &lt;- 
   log_res %&gt;%
   collect_predictions()</code></pre>
 </div>
 <div id="confusion-matrix" class="section level4" number="4.3.1.4">
 <h4><span class="header-section-number">4.3.1.4</span> Confusion matrix</h4>
 <p>Now we can use the predictions to create a <em>confusion matrix</em> with <code>conf_mat()</code>:</p>
-<pre class="r"><code class="hljs">log_pred %&gt;% 
+<pre class="r"><code>log_pred %&gt;% 
   conf_mat(price_category, .pred_class) </code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#           Truth</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Prediction above below</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#      above  8788  1306</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#      below  1025  4361</span></span></code></pre>
+<pre><code>##           Truth
+## Prediction above below
+##      above  8788  1306
+##      below  1025  4361</code></pre>
 <p>Additionally, the confusion matrix can quickly be visualized in different formats using <code>autoplot()</code>. Type mosaic:</p>
-<pre class="r"><code class="hljs">log_pred %&gt;% 
+<pre class="r"><code>log_pred %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
-  autoplot(type = <span class="hljs-string">"mosaic"</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-56-1.png" width="672"></p>
+  autoplot(type = &quot;mosaic&quot;)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Or type heatmap:</p>
-<pre class="r"><code class="hljs">log_pred %&gt;% 
+<pre class="r"><code>log_pred %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
-  autoplot(type = <span class="hljs-string">"heatmap"</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-57-1.png" width="672"></p>
+  autoplot(type = &quot;heatmap&quot;)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="roc-curve" class="section level4" number="4.3.1.5">
 <h4><span class="header-section-number">4.3.1.5</span> ROC-Curve</h4>
 <p>We can also make an ROC curve for our 5 folds. Since the category we are predicting is the first level in the <code>price_category</code> factor (“above”), we provide <code>roc_curve()</code> with the relevant class probability <code>.pred_above</code>:</p>
-<pre class="r"><code class="hljs">log_pred %&gt;% 
-  group_by(id) %&gt;% <span class="hljs-comment"># id contains our folds</span>
+<pre class="r"><code>log_pred %&gt;% 
+  group_by(id) %&gt;% # id contains our folds
   roc_curve(price_category, .pred_above) %&gt;% 
   autoplot()</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-58-1.png" width="672"></p>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Visit <a href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">Google developer’s Machine Learning Crashcourse</a> to learn more about the ROC-Curve.</p>
 </div>
 <div id="probability-distributions" class="section level4" number="4.3.1.6">
 <h4><span class="header-section-number">4.3.1.6</span> Probability distributions</h4>
 <p>Plot predicted probability distributions for our two classes.</p>
-<pre class="r"><code class="hljs">log_pred %&gt;% 
+<pre class="r"><code>log_pred %&gt;% 
   ggplot() +
   geom_density(aes(x = .pred_above, 
                    fill = price_category), 
-               alpha = <span class="hljs-number">0.5</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-59-1.png" width="672"></p>
+               alpha = 0.5)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 </div>
 </div>
 <div id="random-forest-2" class="section level3" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Random forest</h3>
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
-<pre class="r"><code class="hljs">rf_res &lt;-
+<pre class="r"><code>rf_res &lt;-
   rf_wflow %&gt;% 
   fit_resamples(
     resamples = cv_folds, 
@@ -3724,26 +3500,26 @@ log_res_2 &lt;-
       recall, precision, f_meas, 
       accuracy, kap,
       roc_auc, sens, spec),
-    control = control_resamples(save_pred = <span class="hljs-literal">TRUE</span>)
+    control = control_resamples(save_pred = TRUE)
     ) 
 
-rf_res %&gt;%  collect_metrics(summarize = <span class="hljs-literal">TRUE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 6</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .metric   .estimator  mean     n std_err .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 accuracy  binary     0.858     5 0.00318 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 f_meas    binary     0.889     5 0.00264 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 kap       binary     0.690     5 0.00663 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 precision binary     0.876     5 0.00208 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 recall    binary     0.903     5 0.00442 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 roc_auc   binary     0.926     5 0.00179 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 sens      binary     0.903     5 0.00442 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 spec      binary     0.779     5 0.00409 Preprocessor1_Model1</span></span></code></pre>
+rf_res %&gt;%  collect_metrics(summarize = TRUE)</code></pre>
+<pre><code>## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n std_err .config             
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy  binary     0.858     5 0.00318 Preprocessor1_Model1
+## 2 f_meas    binary     0.889     5 0.00264 Preprocessor1_Model1
+## 3 kap       binary     0.690     5 0.00663 Preprocessor1_Model1
+## 4 precision binary     0.876     5 0.00208 Preprocessor1_Model1
+## 5 recall    binary     0.903     5 0.00442 Preprocessor1_Model1
+## 6 roc_auc   binary     0.926     5 0.00179 Preprocessor1_Model1
+## 7 sens      binary     0.903     5 0.00442 Preprocessor1_Model1
+## 8 spec      binary     0.779     5 0.00409 Preprocessor1_Model1</code></pre>
 </div>
 <div id="xgboost-1" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> XGBoost</h3>
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
-<pre class="r"><code class="hljs">xgb_res &lt;- 
+<pre class="r"><code>xgb_res &lt;- 
   xgb_wflow %&gt;% 
   fit_resamples(
     resamples = cv_folds, 
@@ -3751,26 +3527,26 @@ rf_res %&gt;%  collect_metrics(summarize = <span class="hljs-literal">TRUE</span
       recall, precision, f_meas, 
       accuracy, kap,
       roc_auc, sens, spec),
-    control = control_resamples(save_pred = <span class="hljs-literal">TRUE</span>)
+    control = control_resamples(save_pred = TRUE)
     ) 
 
-xgb_res %&gt;% collect_metrics(summarize = <span class="hljs-literal">TRUE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 6</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .metric   .estimator  mean     n  std_err .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 accuracy  binary     0.859     5 0.00262  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 f_meas    binary     0.890     5 0.00235  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 kap       binary     0.694     5 0.00508  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 precision binary     0.881     5 0.000480 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 recall    binary     0.898     5 0.00485  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 roc_auc   binary     0.928     5 0.00121  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 sens      binary     0.898     5 0.00485  Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 spec      binary     0.791     5 0.00158  Preprocessor1_Model1</span></span></code></pre>
+xgb_res %&gt;% collect_metrics(summarize = TRUE)</code></pre>
+<pre><code>## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n  std_err .config             
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy  binary     0.859     5 0.00262  Preprocessor1_Model1
+## 2 f_meas    binary     0.890     5 0.00235  Preprocessor1_Model1
+## 3 kap       binary     0.694     5 0.00508  Preprocessor1_Model1
+## 4 precision binary     0.881     5 0.000480 Preprocessor1_Model1
+## 5 recall    binary     0.898     5 0.00485  Preprocessor1_Model1
+## 6 roc_auc   binary     0.928     5 0.00121  Preprocessor1_Model1
+## 7 sens      binary     0.898     5 0.00485  Preprocessor1_Model1
+## 8 spec      binary     0.791     5 0.00158  Preprocessor1_Model1</code></pre>
 </div>
 <div id="k-nearest-neighbor-2" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> K-nearest neighbor</h3>
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
-<pre class="r"><code class="hljs">knn_res &lt;- 
+<pre class="r"><code>knn_res &lt;- 
   knn_wflow %&gt;% 
   fit_resamples(
     resamples = cv_folds, 
@@ -3778,26 +3554,26 @@ xgb_res %&gt;% collect_metrics(summarize = <span class="hljs-literal">TRUE</span
       recall, precision, f_meas, 
       accuracy, kap,
       roc_auc, sens, spec),
-    control = control_resamples(save_pred = <span class="hljs-literal">TRUE</span>)
+    control = control_resamples(save_pred = TRUE)
     ) 
 
-knn_res %&gt;% collect_metrics(summarize = <span class="hljs-literal">TRUE</span>)</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 6</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .metric   .estimator  mean     n std_err .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 accuracy  binary     0.803     5 0.00437 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 f_meas    binary     0.845     5 0.00361 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 kap       binary     0.575     5 0.00926 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 precision binary     0.844     5 0.00402 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 recall    binary     0.846     5 0.00565 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 roc_auc   binary     0.883     5 0.00289 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 sens      binary     0.846     5 0.00565 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 spec      binary     0.729     5 0.00832 Preprocessor1_Model1</span></span></code></pre>
+knn_res %&gt;% collect_metrics(summarize = TRUE)</code></pre>
+<pre><code>## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n std_err .config             
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy  binary     0.803     5 0.00437 Preprocessor1_Model1
+## 2 f_meas    binary     0.845     5 0.00361 Preprocessor1_Model1
+## 3 kap       binary     0.575     5 0.00926 Preprocessor1_Model1
+## 4 precision binary     0.844     5 0.00402 Preprocessor1_Model1
+## 5 recall    binary     0.846     5 0.00565 Preprocessor1_Model1
+## 6 roc_auc   binary     0.883     5 0.00289 Preprocessor1_Model1
+## 7 sens      binary     0.846     5 0.00565 Preprocessor1_Model1
+## 8 spec      binary     0.729     5 0.00832 Preprocessor1_Model1</code></pre>
 </div>
 <div id="neural-network-2" class="section level3" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Neural network</h3>
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
-<pre class="r"><code class="hljs">nnet_res &lt;- 
+<pre class="r"><code>nnet_res &lt;- 
   nnet_wflow %&gt;% 
   fit_resamples(
     resamples = cv_folds, 
@@ -3805,97 +3581,97 @@ knn_res %&gt;% collect_metrics(summarize = <span class="hljs-literal">TRUE</span
       recall, precision, f_meas, 
       accuracy, kap,
       roc_auc, sens, spec),
-    control = control_resamples(save_pred = <span class="hljs-literal">TRUE</span>)
+    control = control_resamples(save_pred = TRUE)
     ) </code></pre>
 </div>
 <div id="compare-models" class="section level3" number="4.3.6">
 <h3><span class="header-section-number">4.3.6</span> Compare models</h3>
 <p>Extract metrics from our models to compare them:</p>
-<pre class="r"><code class="hljs">log_metrics &lt;- 
+<pre class="r"><code>log_metrics &lt;- 
   log_res %&gt;% 
-  collect_metrics(summarise = <span class="hljs-literal">TRUE</span>) %&gt;%
-  mutate(model = <span class="hljs-string">"Logistic Regression"</span>) <span class="hljs-comment"># add the name of the model to every row</span>
+  collect_metrics(summarise = TRUE) %&gt;%
+  mutate(model = &quot;Logistic Regression&quot;) # add the name of the model to every row
 
 rf_metrics &lt;- 
   rf_res %&gt;% 
-  collect_metrics(summarise = <span class="hljs-literal">TRUE</span>) %&gt;%
-  mutate(model = <span class="hljs-string">"Random Forest"</span>)
+  collect_metrics(summarise = TRUE) %&gt;%
+  mutate(model = &quot;Random Forest&quot;)
 
 xgb_metrics &lt;- 
   xgb_res %&gt;% 
-  collect_metrics(summarise = <span class="hljs-literal">TRUE</span>) %&gt;%
-  mutate(model = <span class="hljs-string">"XGBoost"</span>)
+  collect_metrics(summarise = TRUE) %&gt;%
+  mutate(model = &quot;XGBoost&quot;)
 
 knn_metrics &lt;- 
   knn_res %&gt;% 
-  collect_metrics(summarise = <span class="hljs-literal">TRUE</span>) %&gt;%
-  mutate(model = <span class="hljs-string">"Knn"</span>)
+  collect_metrics(summarise = TRUE) %&gt;%
+  mutate(model = &quot;Knn&quot;)
 
-<span class="hljs-comment"># nnet_metrics &lt;- </span>
-<span class="hljs-comment">#   nnet_res %&gt;% </span>
-<span class="hljs-comment">#   collect_metrics(summarise = TRUE) %&gt;%</span>
-<span class="hljs-comment">#   mutate(model = "Neural Net")</span>
+# nnet_metrics &lt;- 
+#   nnet_res %&gt;% 
+#   collect_metrics(summarise = TRUE) %&gt;%
+#   mutate(model = &quot;Neural Net&quot;)
 
-<span class="hljs-comment"># create dataframe with all models</span>
+# create dataframe with all models
 model_compare &lt;- bind_rows(
                           log_metrics,
                            rf_metrics,
                            xgb_metrics,
                            knn_metrics,
-                         <span class="hljs-comment"># nnet_metrics</span>
+                         # nnet_metrics
                            ) 
 
-<span class="hljs-comment"># change data structure</span>
+# change data structure
 model_comp &lt;- 
   model_compare %&gt;% 
   select(model, .metric, mean, std_err) %&gt;% 
   pivot_wider(names_from = .metric, values_from = c(mean, std_err)) 
 
-<span class="hljs-comment"># show mean F1-Score for every model</span>
+# show mean F1-Score for every model
 model_comp %&gt;% 
   arrange(mean_f_meas) %&gt;% 
-  mutate(model = fct_reorder(model, mean_f_meas)) %&gt;% <span class="hljs-comment"># order results</span>
+  mutate(model = fct_reorder(model, mean_f_meas)) %&gt;% # order results
   ggplot(aes(model, mean_f_meas, fill=model)) +
   geom_col() +
   coord_flip() +
-  scale_fill_brewer(palette = <span class="hljs-string">"Blues"</span>) +
+  scale_fill_brewer(palette = &quot;Blues&quot;) +
    geom_text(
-     size = <span class="hljs-number">3</span>,
-     aes(label = round(mean_f_meas, <span class="hljs-number">2</span>), y = mean_f_meas + <span class="hljs-number">0.08</span>),
-     vjust = <span class="hljs-number">1</span>
+     size = 3,
+     aes(label = round(mean_f_meas, 2), y = mean_f_meas + 0.08),
+     vjust = 1
   )</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-64-1.png" width="672"></p>
-<pre class="r"><code class="hljs"><span class="hljs-comment"># show mean area under the curve (auc) per model</span>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<pre class="r"><code># show mean area under the curve (auc) per model
 model_comp %&gt;% 
   arrange(mean_roc_auc) %&gt;% 
   mutate(model = fct_reorder(model, mean_roc_auc)) %&gt;%
   ggplot(aes(model, mean_roc_auc, fill=model)) +
   geom_col() +
   coord_flip() +
-  scale_fill_brewer(palette = <span class="hljs-string">"Blues"</span>) + 
+  scale_fill_brewer(palette = &quot;Blues&quot;) + 
      geom_text(
-     size = <span class="hljs-number">3</span>,
-     aes(label = round(mean_roc_auc, <span class="hljs-number">2</span>), y = mean_roc_auc + <span class="hljs-number">0.08</span>),
-     vjust = <span class="hljs-number">1</span>
+     size = 3,
+     aes(label = round(mean_roc_auc, 2), y = mean_roc_auc + 0.08),
+     vjust = 1
   )</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-64-2.png" width="672"></p>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-2.png" width="672" /></p>
 <p>Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:</p>
-<pre class="r"><code class="hljs">model_comp %&gt;% slice_max(mean_f_meas)</code></pre>
-<pre><code class="hljs objectivec"><span class="hljs-meta">## # A tibble: 1 x 17</span>
-<span class="hljs-meta">##   model   mean_accuracy mean_f_meas mean_kap mean_precision mean_recall</span>
-<span class="hljs-meta">##   <span class="hljs-meta-string">&lt;chr&gt;</span>           <span class="hljs-meta-string">&lt;dbl&gt;</span>       <span class="hljs-meta-string">&lt;dbl&gt;</span>    <span class="hljs-meta-string">&lt;dbl&gt;</span>          <span class="hljs-meta-string">&lt;dbl&gt;</span>       <span class="hljs-meta-string">&lt;dbl&gt;</span></span>
-<span class="hljs-meta">## 1 XGBoost         0.859       0.890    0.694          0.881       0.898</span>
-<span class="hljs-meta">## # … with 11 more variables: mean_roc_auc <span class="hljs-meta-string">&lt;dbl&gt;</span>, mean_sens <span class="hljs-meta-string">&lt;dbl&gt;</span>,</span>
-<span class="hljs-meta">## #   mean_spec <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_accuracy <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_f_meas <span class="hljs-meta-string">&lt;dbl&gt;</span>,</span>
-<span class="hljs-meta">## #   std_err_kap <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_precision <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_recall <span class="hljs-meta-string">&lt;dbl&gt;</span>,</span>
-<span class="hljs-meta">## #   std_err_roc_auc <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_sens <span class="hljs-meta-string">&lt;dbl&gt;</span>, std_err_spec <span class="hljs-meta-string">&lt;dbl&gt;</span></span></code></pre>
+<pre class="r"><code>model_comp %&gt;% slice_max(mean_f_meas)</code></pre>
+<pre><code>## # A tibble: 1 x 17
+##   model   mean_accuracy mean_f_meas mean_kap mean_precision mean_recall
+##   &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;
+## 1 XGBoost         0.859       0.890    0.694          0.881       0.898
+## # … with 11 more variables: mean_roc_auc &lt;dbl&gt;, mean_sens &lt;dbl&gt;,
+## #   mean_spec &lt;dbl&gt;, std_err_accuracy &lt;dbl&gt;, std_err_f_meas &lt;dbl&gt;,
+## #   std_err_kap &lt;dbl&gt;, std_err_precision &lt;dbl&gt;, std_err_recall &lt;dbl&gt;,
+## #   std_err_roc_auc &lt;dbl&gt;, std_err_sens &lt;dbl&gt;, std_err_spec &lt;dbl&gt;</code></pre>
 <p>Now it’s time to fit the best model one last time to the full <em>training set</em> and evaluate the resulting final model on the <em>test set</em>.</p>
 </div>
 </div>
 <div id="last-evaluation-on-test-set" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Last evaluation on test set</h2>
 <p>Tidymodels provides the function <a href="https://tune.tidymodels.org/reference/last_fit.html"><code>last_fit()</code></a> which fits a model to the whole <em>training data</em> and evaluates it on the <em>test set</em>. We just need to provide the workflow object of the best model as well as the <strong>data split</strong> object (not the training data).</p>
-<pre class="r"><code class="hljs">last_fit_rf &lt;- last_fit(rf_wflow, 
+<pre class="r"><code>last_fit_rf &lt;- last_fit(rf_wflow, 
                         split = data_split,
                         metrics = metric_set(
                           recall, precision, f_meas, 
@@ -3903,41 +3679,41 @@ model_comp %&gt;%
                           roc_auc, sens, spec)
                         )</code></pre>
 <p>Show performance metrics</p>
-<pre class="r"><code class="hljs">last_fit_rf %&gt;% 
+<pre class="r"><code>last_fit_rf %&gt;% 
   collect_metrics()</code></pre>
-<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># # A tibble: 8 x 4</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   .metric   .estimator .estimate .config             </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 1 recall    binary         0.895 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 2 precision binary         0.877 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 3 f_meas    binary         0.886 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 4 accuracy  binary         0.854 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 5 kap       binary         0.683 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 6 sens      binary         0.895 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 7 spec      binary         0.783 Preprocessor1_Model1</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 8 roc_auc   binary         0.925 Preprocessor1_Model1</span></span></code></pre>
+<pre><code>## # A tibble: 8 x 4
+##   .metric   .estimator .estimate .config             
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+## 1 recall    binary         0.895 Preprocessor1_Model1
+## 2 precision binary         0.877 Preprocessor1_Model1
+## 3 f_meas    binary         0.886 Preprocessor1_Model1
+## 4 accuracy  binary         0.854 Preprocessor1_Model1
+## 5 kap       binary         0.683 Preprocessor1_Model1
+## 6 sens      binary         0.895 Preprocessor1_Model1
+## 7 spec      binary         0.783 Preprocessor1_Model1
+## 8 roc_auc   binary         0.925 Preprocessor1_Model1</code></pre>
 <p>And these are our final performance metrics. Remember that if a model fit to the training dataset also fits the test dataset well, minimal <em>overfitting</em> has taken place. This seems to be also the case in our example.</p>
 <p>To learn more about the model we can access the variable importance scores via the <code>.workflow</code> column. We first need to pluck out the first element in the workflow column, then pull out the fit from the workflow object. Finally, the <code>vip</code> package helps us visualize the variable importance scores for the top features. Note that we can’t create this type of plot for every model engine.</p>
-<pre class="r"><code class="hljs"><span class="hljs-keyword">library</span>(vip)
+<pre class="r"><code>library(vip)
 
 last_fit_rf %&gt;% 
-  pluck(<span class="hljs-string">".workflow"</span>, <span class="hljs-number">1</span>) %&gt;%   
+  pluck(&quot;.workflow&quot;, 1) %&gt;%   
   pull_workflow_fit() %&gt;% 
-  vip(num_features = <span class="hljs-number">10</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-68-1.png" width="672"></p>
+  vip(num_features = 10)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>The two most important predictors in whether a district has a median house value above or below 150000 dollars were the ocean proximity inland and the median income.</p>
 <p>Take a look at the confusion matrix:</p>
-<pre class="r"><code class="hljs">last_fit_rf %&gt;%
+<pre class="r"><code>last_fit_rf %&gt;%
   collect_predictions() %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
-  autoplot(type = <span class="hljs-string">"heatmap"</span>)</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-69-1.png" width="672"></p>
+  autoplot(type = &quot;heatmap&quot;)</code></pre>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Let’s create the ROC curve. Again, since the event we are predicting is the first level in the <code>price_category</code> factor (“above”), we provide <code>roc_curve()</code> with the relevant class probability <code>.pred_above</code>:</p>
-<pre class="r"><code class="hljs">last_fit_rf %&gt;% 
+<pre class="r"><code>last_fit_rf %&gt;% 
   collect_predictions() %&gt;% 
   roc_curve(price_category, .pred_above) %&gt;% 
   autoplot()</code></pre>
-<p><img src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/unnamed-chunk-70-1.png" width="672"></p>
+<p><img src="https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p>Based on all of the results, the validation set and test set performance statistics are very close, so we would have pretty high confidence that our random forest model with the selected hyperparameters would perform well when predicting new data.</p>
 </div>
 </div>
@@ -3948,13 +3724,13 @@ last_fit_rf %&gt;%
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="https://www.kirenz.com/tags/statistics/">Statistics</a>
+  <a class="badge badge-light" href="/tags/statistics/">Statistics</a>
   
-  <a class="badge badge-light" href="https://www.kirenz.com/tags/r/">R</a>
+  <a class="badge badge-light" href="/tags/r/">R</a>
   
-  <a class="badge badge-light" href="https://www.kirenz.com/tags/machine-learning/">Machine Learning</a>
+  <a class="badge badge-light" href="/tags/machine-learning/">Machine Learning</a>
   
-  <a class="badge badge-light" href="https://www.kirenz.com/tags/tidymodels/">Tidymodels</a>
+  <a class="badge badge-light" href="/tags/tidymodels/">Tidymodels</a>
   
 </div>
 
@@ -3986,16 +3762,16 @@ last_fit_rf %&gt;%
     
   
   
-  <div class="media author-card" itemscope="" itemtype="http://schema.org/Person">
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
     
       
-      <img class="portrait mr-3" src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/avatar_hueae13a71fe19f01939a18649b8290d14_147971_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/jan/avatar_hueae13a71fe19f01939a18649b8290d14_147971_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
     
 
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="https://kirenz.com/">Jan Kirenz</a></h5>
       <h6 class="card-subtitle">Professor</h6>
-      <p class="card-text" itemprop="description">I’m a data scientist educator and consultant.</p>
+      <p class="card-text" itemprop="description">I&rsquo;m a data scientist educator and consultant.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -4010,7 +3786,7 @@ last_fit_rf %&gt;%
             
           
           <li>
-            <a itemprop="sameAs" href="https://www.kirenz.com/contact">
+            <a itemprop="sameAs" href="/contact" >
               <i class="fas fa-paper-plane"></i>
             </a>
           </li>
@@ -4079,15 +3855,15 @@ last_fit_rf %&gt;%
         <h3>Related</h3>
         <ul>
           
-          <li><a href="https://www.kirenz.com/post/2020-12-19-r-tidymodels-housing/">Data Science with Tidymodels, Workflows and Recipes</a></li>
+          <li><a href="/post/2020-12-19-r-tidymodels-housing/">Data Science with Tidymodels, Workflows and Recipes</a></li>
           
-          <li><a href="https://www.kirenz.com/talk/2019-applied-statistics/">Applied Statistics</a></li>
+          <li><a href="/talk/2019-applied-statistics/">Applied Statistics</a></li>
           
-          <li><a href="https://www.kirenz.com/post/2019-09-16-r-text-mining/">Text Mining in R</a></li>
+          <li><a href="/post/2019-09-16-r-text-mining/">Text Mining in R</a></li>
           
-          <li><a href="https://www.kirenz.com/project/r-data-science-statistics/">Free books to learn Data Science &amp; Statistics with R</a></li>
+          <li><a href="/project/r-data-science-statistics/">Free books to learn Data Science &amp; Statistics with R</a></li>
           
-          <li><a href="https://www.kirenz.com/post/2020-05-21-r-hierarchische-clusteranalyse/">Hierarchische Clusteranalyse mit Ward in R</a></li>
+          <li><a href="/post/2020-05-21-r-hierarchische-clusteranalyse/">Hierarchische Clusteranalyse mit Ward in R</a></li>
           
         </ul>
       </div>
@@ -4107,40 +3883,40 @@ last_fit_rf %&gt;%
     
     
     
-    <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/mathjax-config.js.transferir"></script>
+    <script src="/js/mathjax-config.js"></script>
     
 
     
     
     
-      <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/jquery.min.js.transferir" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/imagesloaded.pkgd.min.js.transferir" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-      <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/isotope.pkgd.min.js.transferir" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/jquery.fancybox.min.js.transferir" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
 
       
 
       
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/highlight.min.js.transferir" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/r.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/css.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/bash.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/js.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/markdown.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/markdown.min.js"></script>
         
-        <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/html.min.js.transferir"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script>
         
       
 
       
       
-      <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/MathJax.js.transferir" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async=""></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
       
     
 
@@ -4194,8 +3970,8 @@ last_fit_rf %&gt;%
 
     
     
-    <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/fuse.min.js.transferir" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
-    <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/jquery.mark.min.js.transferir" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     
 
     
@@ -4215,7 +3991,7 @@ last_fit_rf %&gt;%
     
     
     
-    <script src="./Classification with Tidymodels, Workflows and Recipes _ Jan Kirenz_files/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js.transferir"></script>
+    <script src="/js/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js"></script>
 
     
 
@@ -4229,20 +4005,20 @@ last_fit_rf %&gt;%
     <footer class="site-footer">
   
   <p class="powered-by">
-    <a href="https://www.kirenz.com/license/">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
+    <a href="/license/">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
   </p>
   
 
   <p class="powered-by">
-    © Jan Kirenz, 2022 · 
+    &copy; Jan Kirenz, 2022 &middot; 
 
     Made with the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package and the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>. 
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>. 
 
     
     <span class="float-right" aria-hidden="true">
-      <a href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#" id="back_to_top">
+      <a href="#" id="back_to_top">
         <span class="button_icon">
           <i class="fas fa-chevron-up fa-2x"></i>
         </span>
@@ -4262,17 +4038,17 @@ last_fit_rf %&gt;%
       <div class="modal-header">
         <h5 class="modal-title">Cite</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <pre><code class="tex hljs"></code></pre>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-outline-primary my-1 js-copy-cite" href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#" target="_blank">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
           <i class="fas fa-copy"></i> Copy
         </a>
-        <a class="btn btn-outline-primary my-1 js-download-cite" href="https://www.kirenz.com/post/2021-02-17-r-classification-tidymodels/#" target="_blank">
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
           <i class="fas fa-download"></i> Download
         </a>
         <div id="modal-error"></div>
@@ -4281,6 +4057,5 @@ last_fit_rf %&gt;%
   </div>
 </div>
 
-
-
-</body></html>
+</body>
+</html>
