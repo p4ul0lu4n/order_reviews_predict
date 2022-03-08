@@ -4,14 +4,14 @@
 rm(list = ls())
 
 #INSTALACAO E/OU CARREGAMENTO DOS PACOTES
-pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels")
+pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels", "ranger", "doSNOW", "xgboost")
 novos.pacotes = pacotes[!(pacotes %in% installed.packages()[, "Package"])]
 if(length(novos.pacotes)) install.packages(novos.pacotes, repos = 'https://cran.us.r-project.org')
 options(warn = -1)
 unlist(lapply(pacotes, require, character.only = TRUE))
 
 #DEFININDO DIRETORIO PADRAO
-#setwd("source")
+setwd("~/git/tcc/source")
 
 # LEITURA DOS DATASETS -------------------------------------------------------
 
@@ -123,8 +123,6 @@ data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = ta
 data_recipe = rsample::training(x = data_split) %>%
   recipes::recipe(target ~ .) %>%
   recipes::step_corr(recipes::all_predictors(), threshold = 0.9) %>%
-  #recipes::step_center(all_predictors(), -all_outcomes()) %>%
-  #recipes::step_scale(all_predictors(), -all_outcomes()) %>%
   recipes::prep()
 
 #BASE DE TREINO
@@ -135,17 +133,96 @@ train = data_recipe %>%
 test = data_recipe %>%
   recipes::bake(testing(data_split))
 
+#DEFININDO SEMENTE
+set.seed(123)
+
 #CROSS VALIDATION
-cv = rsample::vfold_cv(train, v = 5, repeats = 2, strata = target)
+cv = rsample::vfold_cv(train, v = 10, repeats = 5, strata = target)
 
 # RANDOM FOREST -----------------------------------------------------------
 
+#ESPECIFICANDO O MODELO
+rf_spec = parsnip::rand_forest() %>% 
+  parsnip::set_engine("ranger", importance = "impurity") %>% 
+  parsnip::set_mode("classification")
+
+#CRIANDO WORKFLOW 
+rf_workflow = workflows::workflow() %>% 
+  workflows::add_recipe(data_recipe) %>%
+  workflows::add_model(rf_spec)
+
+#AJUSTE DO MODELO
+rf_fit = rf_workflow %>% 
+  tune::fit_resamples(resamples = cv, 
+                      metrics = yardstick::metric_set(recall, 
+                                                      f_meas, 
+                                                      accuracy, 
+                                                      kap, 
+                                                      roc_auc),
+                      control = tune::control_resamples(save_pred = TRUE)
+  ) 
+
+#COLETANDO METRICAS
+rf_fit %>% collect_metrics(summarize = TRUE)
+
+#SALVANDO O MODELO EM UM ARQUIVO .RDATA
+save(rf_fit, file = "Data/rf1_model.Rdata")
 
 
 # LOGISTIC REGRESSION -----------------------------------------------------
 
+#ESPECIFICANDO O MODELO
+log_spec = parsnip::logistic_reg() %>% 
+  parsnip::set_engine(engine = "glm") %>%
+  parsnip::set_mode("classification")
 
+#CRIANDO WORKFLOW 
+log_workflow = workflows::workflow() %>% 
+  workflows::add_recipe(data_recipe) %>%
+  workflows::add_model(log_spec)
+
+#AJUSTE DO MODELO
+log_fit = log_workflow %>% 
+  tune::fit_resamples(resamples = cv, 
+                      metrics = yardstick::metric_set(recall, 
+                                                      f_meas, 
+                                                      accuracy, 
+                                                      kap, 
+                                                      roc_auc),
+                      control = tune::control_resamples(save_pred = TRUE)
+  ) 
+
+#COLETANDO METRICAS
+log_fit %>% collect_metrics(summarize = TRUE)
+
+#SALVANDO O MODELO EM UM ARQUIVO .RDATA
+save(log_fit, file = "Data/log1_model.Rdata")
 
 # GRADIENT BOOSTING MACHINE -----------------------------------------------
 
+#ESPECIFICANDO O MODELO
+xgb_spec <- parsnip::boost_tree() %>%
+  parsnip::set_engine("xgboost") %>% 
+  parsnip::set_mode("classification")
 
+#CRIANDO WORKFLOW 
+xgb_workflow = workflows::workflow() %>% 
+  workflows::add_recipe(data_recipe) %>%
+  workflows::add_model(xgb_spec)
+
+#AJUSTE DO MODELO
+xgb_fit = xgb_workflow %>% 
+  tune::fit_resamples(resamples = cv, 
+                      metrics = yardstick::metric_set(recall, 
+                                                      f_meas, 
+                                                      accuracy, 
+                                                      kap, 
+                                                      roc_auc),
+                      control = tune::control_resamples(save_pred = TRUE)
+  ) 
+
+#COLETANDO METRICAS
+xgb_fit %>% collect_metrics(summarize = TRUE)
+
+#SALVANDO O MODELO EM UM ARQUIVO .RDATA
+save(xgb_fit, file = "Data/xgb1_model.Rdata")
