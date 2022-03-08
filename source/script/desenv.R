@@ -4,7 +4,7 @@
 rm(list = ls())
 
 #INSTALACAO E/OU CARREGAMENTO DOS PACOTES
-pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels", "ranger", "doSNOW", "xgboost")
+pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels", "ranger", "doSNOW", "xgboost", "abjutils")
 novos.pacotes = pacotes[!(pacotes %in% installed.packages()[, "Package"])]
 if(length(novos.pacotes)) install.packages(novos.pacotes, repos = 'https://cran.us.r-project.org')
 options(warn = -1)
@@ -19,7 +19,7 @@ setwd("~/git/tcc/source")
 bases = c("customers", "geolocation", "orders", "order_items", 
           "order_payments", "order_reviews", "products", "sellers")
 
-#LOOP DE LEITURA DAS BASES
+#LOOP DE LEITURA DAS BASES DA OLIST
 for(i in 1:length(bases)){
   assign(x = bases[i], 
          value = read.csv(file = paste0("data/olist_", bases[i], "_dataset.csv"), 
@@ -32,10 +32,46 @@ for(i in 1:length(bases)){
   )
 }
 
-# ANALISE DESCRITIVA ------------------------------------------------------------
+#LEITURA DA BASE AUXILIAR DE UF
+uf = read.csv(file = "data/ibge_estados.csv", 
+              header = T, 
+              sep = ";", 
+              dec = ".", 
+              encoding = "UTF-8",
+              na = ''
+) %>%
+  dplyr::select(-name_state)
 
-#BASE INICIAL DE DESENVOLVIMENTO
-data = orders %>% 
+#LEITURA DAS BASES DE IDH (CENSO 2010)
+idh_atlas = read.csv(file = "data/idh_atlas.csv", 
+                     header = T, 
+                     sep = ",", 
+                     dec = ".", 
+                     encoding = "UTF-8",
+                     na = ''
+) %>% 
+  dplyr::filter(ano == 2010) 
+
+#IDH COM AS VARIAVEIS QUE FAZEM SENTIDO PARA A ANALISE
+idh = idh_atlas %>% 
+  dplyr::mutate(municipio = toupper(abjutils::rm_accent(`município`))) %>%
+  dplyr::select(uf, municipio, espvida, e_anosestudo, idhm, idhm_e, idhm_l, idhm_r, t_agua, t_banagua, t_luz, agua_esgoto)
+
+#BASE IDH JUNTA
+data_idh = idh %>%
+  dplyr::inner_join(y = uf, by = c("uf" = "uf"))
+
+#JUNTANDO BASE DE VENDEDORES E CLIENTES COM A BASE DE IDH
+sellers = sellers %>% 
+  dplyr::mutate(seller_city = toupper(abjutils::rm_accent(seller_city))) %>%
+  dplyr::left_join(y = data_idh, by = c("seller_state" = "state", "seller_city" = "municipio"))
+
+customers = customers %>% 
+  dplyr::mutate(customer_city = toupper(abjutils::rm_accent(customer_city))) %>%
+  dplyr::left_join(y = data_idh, by = c("customer_state" = "state", "customer_city" = "municipio"))
+
+#BASE OLIST JUNTA
+data_olist = orders %>% 
   dplyr::left_join(y = order_reviews, by = c("order_id" = "order_id")) %>%
   dplyr::filter(!is.na(review_score)) %>%
   dplyr::left_join(y = customers, by = c("customer_id" = "customer_id")) %>%
@@ -48,7 +84,21 @@ data = orders %>%
   dplyr::filter(yearmon >= '201701' & yearmon <= '201807')
 
 #REMOVENDO AS BASES QUE NAO SERAO MAIS UTILIZADAS
-remove(order_items, order_payments, order_reviews, products, customers, sellers, orders)
+remove(order_items, order_payments, order_reviews, products, customers, sellers, orders, geolocation, idh_atlas, idh, uf)
+
+#EXPANDINDO A MEMORIA
+#memory.limit(size = NA) 
+
+tictoc::tic()
+#BASE INICIAL PARA DESENVOLVIMENTO
+data = data_olist %>%
+  dplyr::inner_join(y = data_idh, by = c("customer_state" = "customer_state"))
+
+#REMOVENDO AS BASES QUE NAO SERAO MAIS UTILIZADAS
+remove(data_idh, data_olist)
+tictoc::toc()
+
+# ANALISE EXPLORATORIA ------------------------------------------------------------
 
 # #VERIFICANDO BALANCEAMENTO DA POPULACAO
 # avaliacao = data %>% 
