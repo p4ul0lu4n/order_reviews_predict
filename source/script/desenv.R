@@ -4,7 +4,7 @@
 rm(list = ls())
 
 #INSTALACAO E/OU CARREGAMENTO DOS PACOTES
-pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels", "ranger", "doSNOW", "xgboost", "abjutils")
+pacotes = c("dplyr", "lubridate", "stringr", "tictoc", "ggplot2", "tidymodels", "ranger", "doSNOW", "xgboost", "abjutils", "forcats")
 novos.pacotes = pacotes[!(pacotes %in% installed.packages()[, "Package"])]
 if(length(novos.pacotes)) install.packages(novos.pacotes, repos = 'https://cran.us.r-project.org')
 options(warn = -1)
@@ -52,6 +52,9 @@ idh_atlas = read.csv(file = "data/idh_atlas.csv",
 ) %>% 
   dplyr::filter(ano == 2010) 
 
+
+# PRE PROCESSAMENTO/TRATAMENTO --------------------------------------------
+
 #IDH COM AS VARIAVEIS QUE FAZEM SENTIDO PARA A ANALISE
 idh = idh_atlas %>% 
   dplyr::mutate(municipio = toupper(abjutils::rm_accent(`município`))) %>%
@@ -61,42 +64,38 @@ idh = idh_atlas %>%
 data_idh = idh %>%
   dplyr::inner_join(y = uf, by = c("uf" = "uf"))
 
-#JUNTANDO BASE DE VENDEDORES E CLIENTES COM A BASE DE IDH
-sellers = sellers %>% 
+#TRATANDO A VARIAVEL DE CIDADE DO VENDEDOR E CLIENTE
+sellers_idh = sellers %>% 
   dplyr::mutate(seller_city = toupper(abjutils::rm_accent(seller_city))) %>%
-  dplyr::left_join(y = data_idh, by = c("seller_state" = "state", "seller_city" = "municipio"))
+  dplyr::mutate(seller_city = stringr::str_squish(seller_city)) %>%
+  dplyr::inner_join(y = data_idh, by = c("seller_state" = "state", "seller_city" = "municipio")) %>%
+  dplyr::rename(seller_uf = uf, seller_espvida = espvida, seller_e_anosestudo = e_anosestudo, seller_idhm = idhm, seller_idhm_r = idhm_r, 
+                seller_idhm_l = idhm_l, seller_idhm_e = idhm_e, seller_t_agua = t_agua, seller_t_banagua = t_banagua, seller_t_luz = t_luz, 
+                seller_agua_esgoto = agua_esgoto)
 
-customers = customers %>% 
+customers_idh = customers %>% 
   dplyr::mutate(customer_city = toupper(abjutils::rm_accent(customer_city))) %>%
-  dplyr::left_join(y = data_idh, by = c("customer_state" = "state", "customer_city" = "municipio"))
+  dplyr::mutate(customer_city = stringr::str_squish(customer_city)) %>%
+  dplyr::inner_join(y = data_idh, by = c("customer_state" = "state", "customer_city" = "municipio")) %>%
+  dplyr::rename(customer_uf = uf, customer_espvida = espvida, customer_e_anosestudo = e_anosestudo, customer_idhm = idhm, customer_idhm_r = idhm_r, 
+                customer_idhm_l = idhm_l, customer_idhm_e = idhm_e, customer_t_agua = t_agua, customer_t_banagua = t_banagua, customer_t_luz = t_luz, 
+                customer_agua_esgoto = agua_esgoto)
 
 #BASE OLIST JUNTA
-data_olist = orders %>% 
+data = orders %>% 
   dplyr::left_join(y = order_reviews, by = c("order_id" = "order_id")) %>%
   dplyr::filter(!is.na(review_score)) %>%
-  dplyr::left_join(y = customers, by = c("customer_id" = "customer_id")) %>%
+  dplyr::left_join(y = customers_idh, by = c("customer_id" = "customer_id")) %>%
   dplyr::left_join(y = order_payments, by = c("order_id" = "order_id")) %>%
   dplyr::left_join(y = order_items, by = c("order_id" = "order_id")) %>%
-  dplyr::left_join(y = sellers, by = c("seller_id" = "seller_id")) %>%
+  dplyr::left_join(y = sellers_idh, by = c("seller_id" = "seller_id")) %>%
   dplyr::left_join(y = products, by = c("product_id" = "product_id")) %>% 
   dplyr::mutate(yearmon = format(as.Date(order_purchase_timestamp), '%Y%m'), 
                 target = as.factor(dplyr::case_when(review_score <= 3 ~ 1, TRUE ~ 0))) %>%
   dplyr::filter(yearmon >= '201701' & yearmon <= '201807')
 
 #REMOVENDO AS BASES QUE NAO SERAO MAIS UTILIZADAS
-remove(order_items, order_payments, order_reviews, products, customers, sellers, orders, geolocation, idh_atlas, idh, uf)
-
-#EXPANDINDO A MEMORIA
-#memory.limit(size = NA) 
-
-tictoc::tic()
-#BASE INICIAL PARA DESENVOLVIMENTO
-data = data_olist %>%
-  dplyr::inner_join(y = data_idh, by = c("customer_state" = "customer_state"))
-
-#REMOVENDO AS BASES QUE NAO SERAO MAIS UTILIZADAS
-remove(data_idh, data_olist)
-tictoc::toc()
+remove(order_items, order_payments, order_reviews, products, customers, customers_idh, sellers, sellers_idh, orders, geolocation, idh_atlas, data_idh, idh, uf)
 
 # ANALISE EXPLORATORIA ------------------------------------------------------------
 
@@ -135,36 +134,83 @@ tictoc::toc()
 
 # FEATURE ENGINEERING -----------------------------------------------------
 
+#FUNCAO QUE SUBSTITUI NA POR QUALQUER VALOR
+repNA = function(x, valor)tidyr::replace_na(data = x, replace = valor)
+
+#CRIACAO DE VARIAVEIS
 data_new_var = data %>%
-  dplyr::mutate(aprovado = ifelse(is.na(order_approved_at), yes = 0, no = 1), 
-                entregue = ifelse(is.na(order_delivered_customer_date), yes = 0, no = 1), 
-                atraso = dplyr::case_when(as.Date(order_delivered_customer_date) > as.Date(order_estimated_delivery_date) | is.na(order_delivered_customer_date) ~ 1, TRUE ~ 0), 
-                reg_cli = dplyr::case_when(customer_state %in% c('AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO') ~ 1, 
-                                           customer_state %in% c('AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'SE', 'RN') ~ 2, 
-                                           customer_state %in% c('DF', 'GO', 'MS', 'MT') ~ 3,
-                                           customer_state %in% c('ES', 'MG', 'RJ', 'SP') ~ 4, 
-                                           customer_state %in% c('PR', 'SC', 'RS') ~ 5, 
-                                           TRUE ~ 0), 
-                reg_vend = dplyr::case_when(seller_state %in% c('AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO') ~ 1, 
-                                            seller_state %in% c('AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'SE', 'RN') ~ 2, 
-                                            seller_state %in% c('DF', 'GO', 'MS', 'MT') ~ 3,
-                                            seller_state %in% c('ES', 'MG', 'RJ', 'SP') ~ 4, 
-                                            seller_state %in% c('PR', 'SC', 'RS') ~ 5, 
-                                            TRUE ~ 0),
-                reg_vend_cli = ifelse(test = reg_vend == reg_cli, yes = 1, no = 0),
-                tipo_pag = dplyr::case_when(payment_type == 'boleto' ~ 1, 
-                                            payment_type == 'credit_card' ~ 2, 
-                                            payment_type == 'debit_card' ~ 3, 
-                                            payment_type == 'voucher' ~ 4, 
-                                            TRUE ~ 0), 
-                pag1 = ifelse(test = payment_installments == 1, yes = 1, no = 0)
+  dplyr::mutate(aprovado = ifelse(is.na(order_approved_at), yes = '0', no = '1'), 
+                entregue = ifelse(is.na(order_delivered_customer_date), yes = '0', no = '1'), 
+                atraso = dplyr::case_when(as.Date(order_delivered_customer_date) > as.Date(order_estimated_delivery_date) | is.na(order_delivered_customer_date) ~ '1', TRUE ~ '0'), 
+                reg_cli = dplyr::case_when(customer_state %in% c('AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO') ~ '1', 
+                                           customer_state %in% c('AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'SE', 'RN') ~ '2', 
+                                           customer_state %in% c('DF', 'GO', 'MS', 'MT') ~ '3',
+                                           customer_state %in% c('ES', 'MG', 'RJ', 'SP') ~ '4', 
+                                           customer_state %in% c('PR', 'SC', 'RS') ~ '5', 
+                                           TRUE ~ '0'), 
+                reg_vend = dplyr::case_when(seller_state %in% c('AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO') ~ '1', 
+                                            seller_state %in% c('AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'SE', 'RN') ~ '2', 
+                                            seller_state %in% c('DF', 'GO', 'MS', 'MT') ~ '3',
+                                            seller_state %in% c('ES', 'MG', 'RJ', 'SP') ~ '4', 
+                                            seller_state %in% c('PR', 'SC', 'RS') ~ '5', 
+                                            TRUE ~ '0'),
+                reg_vend_cli = ifelse(test = reg_vend == reg_cli, yes = '1', no = '0'),
+                tipo_pag = dplyr::case_when(payment_type == 'boleto' ~ '1', 
+                                            payment_type == 'credit_card' ~ '2', 
+                                            payment_type == 'debit_card' ~ '3', 
+                                            payment_type == 'voucher' ~ "4", 
+                                            TRUE ~ '0'), 
+                pag1 = ifelse(test = payment_installments == 1, yes = '1', no = '0'), 
+                seller_idhm_cat = dplyr::case_when(seller_idhm < 0.5 ~ '1', 
+                                                   seller_idhm >= 0.5 & seller_idhm < 0.8 ~ '2', 
+                                                   seller_idhm >= 0.8 ~ '3', 
+                                                   TRUE ~ '0'), 
+                seller_idhm_r_cat = dplyr::case_when(seller_idhm_r < 0.5 ~ '1', 
+                                                     seller_idhm_r >= 0.5 & seller_idhm_r < 0.8 ~ '2', 
+                                                     seller_idhm_r >= 0.8 ~ '3', 
+                                                     TRUE ~ '0'), 
+                seller_idhm_l_cat = dplyr::case_when(seller_idhm_l < 0.5 ~ '1', 
+                                                     seller_idhm_l >= 0.5 & seller_idhm_l < 0.8 ~ '2', 
+                                                     seller_idhm_l >= 0.8 ~ '3', 
+                                                     TRUE ~ '0'),
+                seller_idhm_e_cat = dplyr::case_when(seller_idhm_e < 0.5 ~ '1', 
+                                                     seller_idhm_e >= 0.5 & seller_idhm_e < 0.8 ~ '2', 
+                                                     seller_idhm_e >= 0.8 ~ '3', 
+                                                     TRUE ~ '0'), 
+                customer_idhm_cat = dplyr::case_when(customer_idhm < 0.5 ~ '1', 
+                                                     customer_idhm >= 0.5 & customer_idhm < 0.8 ~ '2', 
+                                                     customer_idhm >= 0.8 ~ '3', 
+                                                     TRUE ~ '0'), 
+                customer_idhm_r_cat = dplyr::case_when(customer_idhm_r < 0.5 ~ '1', 
+                                                       customer_idhm_r >= 0.5 & customer_idhm_r < 0.8 ~ '2', 
+                                                       customer_idhm_r >= 0.8 ~ '3', 
+                                                       TRUE ~ '0'), 
+                customer_idhm_l_cat = dplyr::case_when(customer_idhm_l < 0.5 ~ '1', 
+                                                       customer_idhm_l >= 0.5 & customer_idhm_l < 0.8 ~ '2', 
+                                                       customer_idhm_l >= 0.8 ~ '3', 
+                                                       TRUE ~ '0'),
+                customer_idhm_e_cat = dplyr::case_when(customer_idhm_e < 0.5 ~ '1', 
+                                                       customer_idhm_e >= 0.5 & customer_idhm_e < 0.8 ~ '2', 
+                                                       customer_idhm_e >= 0.8 ~ '3', 
+                                                       TRUE ~ '0')
   ) %>%
-  # dplyr::group_by(review_id) %>%
-  # dplyr::mutate(qtd_itens = max(order_item_id)) %>% 
-  # dplyr::ungroup() %>%
-  dplyr::select(target, aprovado, entregue, atraso, reg_cli, reg_vend, reg_vend_cli, pag1, tipo_pag) 
+  dplyr::select(target, aprovado, entregue, atraso, reg_cli, reg_vend, reg_vend_cli, pag1, tipo_pag, 
+                seller_idhm_cat, seller_idhm_r_cat, seller_idhm_e_cat, seller_idhm_l_cat, seller_agua_esgoto,
+                seller_espvida, seller_e_anosestudo, seller_t_agua, seller_t_banagua, seller_t_luz,
+                customer_idhm_cat, customer_idhm_r_cat, customer_idhm_e_cat, customer_idhm_l_cat, 
+                customer_idhm_cat, customer_idhm_r_cat, customer_idhm_e_cat, customer_idhm_l_cat, customer_agua_esgoto,
+                customer_espvida, customer_e_anosestudo, customer_t_agua, customer_t_banagua, customer_t_luz) %>%
+  dplyr::mutate(dplyr::across(c(dplyr::starts_with('seller_t'), 
+                                dplyr::starts_with('seller_e'),
+                                dplyr::starts_with('seller_a'), 
+                                dplyr::starts_with('customer_t'), 
+                                dplyr::starts_with('customer_e'),
+                                dplyr::starts_with('customer_a')), ~repNA(.x, mean(.x, na.rm = T)), .name = "{col}"))
 
 # PRE PROCESS -----------------------------------------------------------
+
+#DEFININDO SEMENTE
+set.seed(123)
 
 #DIVIDINDO A POPULACAO EM TREINO E TESTE
 data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = target)
@@ -172,22 +218,23 @@ data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = ta
 #DATA PREPARATION
 data_recipe = rsample::training(x = data_split) %>%
   recipes::recipe(target ~ .) %>%
-  recipes::step_corr(recipes::all_predictors(), threshold = 0.9) %>%
-  recipes::prep()
-
+  recipes::step_dummy(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #CRIANDO VARIAVEIS DUMMY (ONE-HOT ENCODING)
+  recipes::step_corr(recipes::all_nominal_predictors(), threshold = 0.7, method = "spearman") %>% #REMOVENDO VARIAVEIS NOMINAIS ALTAMENTE CORRELACIONADAS
+  #recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>% #REMOVENDO VARIAVEIS NUMERICAS ALTAMENTE CORRELACIONADAS  
+  recipes::step_zv(recipes::all_numeric_predictors(), -recipes::all_outcomes()) #REMOVENDO VARIAVEIS COM VARIABILIDADE PROXIMA DE ZERO
+  
 #BASE DE TREINO
-train = data_recipe %>%
+preppared_data = data_recipe %>%
+  recipes::prep() %>%
   recipes::juice()
 
 #BASE DE TESTE
 test = data_recipe %>%
-  recipes::bake(testing(data_split))
-
-#DEFININDO SEMENTE
-set.seed(123)
+  recipes::prep() %>%
+  recipes::bake(rsample::testing(data_split))
 
 #CROSS VALIDATION
-cv = rsample::vfold_cv(train, v = 10, repeats = 5, strata = target)
+cv = rsample::vfold_cv(rsample::training(x = data_split), v = 10, repeats = 2, strata = target)
 
 # RANDOM FOREST -----------------------------------------------------------
 
@@ -212,12 +259,10 @@ rf_fit = rf_workflow %>%
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#COLETANDO METRICAS
-rf_fit %>% collect_metrics(summarize = TRUE)
+#ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(rf_fit, file = "Data/rf1_model.Rdata")
-
+save(rf_fit, file = "Data/rf2_model.Rdata")
 
 # LOGISTIC REGRESSION -----------------------------------------------------
 
@@ -242,13 +287,12 @@ log_fit = log_workflow %>%
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#COLETANDO METRICAS
-log_fit %>% collect_metrics(summarize = TRUE)
+#ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
 save(log_fit, file = "Data/log1_model.Rdata")
 
-# GRADIENT BOOSTING MACHINE -----------------------------------------------
+# XGOOST -----------------------------------------------
 
 #ESPECIFICANDO O MODELO
 xgb_spec <- parsnip::boost_tree() %>%
@@ -271,8 +315,114 @@ xgb_fit = xgb_workflow %>%
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#COLETANDO METRICAS
-xgb_fit %>% collect_metrics(summarize = TRUE)
+
+#ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
 save(xgb_fit, file = "Data/xgb1_model.Rdata")
+
+# COMPARANDO MODELOS ------------------------------------------------------
+
+#MODEL METRICS
+rf_metrics = rf_fit %>% 
+  tune::collect_metrics(summarise = TRUE) %>%
+  dplyr::mutate(model = "Random Forest")
+
+log_metrics = log_fit %>% 
+  tune::collect_metrics(summarise = TRUE) %>%
+  dplyr::mutate(model = "Logistic Regression")
+
+
+xgb_metrics = xgb_fit %>% 
+  tune::collect_metrics(summarise = TRUE) %>%
+  dplyr::mutate(model = "XGBoost")
+
+model_compare = dplyr::bind_rows(
+  log_metrics,
+  rf_metrics,
+  xgb_metrics,
+) 
+
+#CHANGE DATA STRUCTURE
+model_comp = model_compare %>% 
+  dplyr::select(model, .metric, mean, std_err) %>% 
+  tidyr::pivot_wider(names_from = .metric, values_from = c(mean, std_err)) 
+
+#MODEL COMPARE PLOT BY F1 SCORE
+model_comp %>% 
+  dplyr::arrange(mean_f_meas) %>% 
+  dplyr::mutate(model = fct_reorder(model, mean_f_meas)) %>%
+  ggplot(aes(model, mean_f_meas, fill = model)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_brewer(palette = "Blues") +
+  geom_text(
+    size = 3,
+    aes(label = round(mean_f_meas, 4), y = mean_f_meas + 0.08),
+    vjust = 1
+  )
+
+#MODEL COMPARE PLOT BY ACCURACY
+model_comp %>% 
+  dplyr::arrange(mean_accuracy) %>% 
+  dplyr::mutate(model = fct_reorder(model, mean_accuracy)) %>%
+  ggplot(aes(model, mean_accuracy, fill = model)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_brewer(palette = "Blues") +
+  geom_text(
+    size = 3,
+    aes(label = round(mean_accuracy, 4), y = mean_accuracy + 0.08),
+    vjust = 1
+  )
+
+#MODEL COMPARE PLOT BY RECALL
+model_comp %>% 
+  dplyr::arrange(mean_recall) %>% 
+  dplyr::mutate(model = fct_reorder(model, mean_recall)) %>%
+  ggplot(aes(model, mean_recall, fill = model)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_brewer(palette = "Blues") +
+  geom_text(
+    size = 3,
+    aes(label = round(mean_recall, 4), y = mean_recall + 0.08),
+    vjust = 1
+  )
+
+# MODEL EVALUATION --------------------------------------------------------
+
+#RANDOM FOREST 
+rf_last_fit = tune::last_fit(rf_workflow, 
+                             split = data_split,
+                             metrics = yardstick::metric_set(recall, 
+                                                             f_meas, 
+                                                             accuracy, 
+                                                             kap,
+                                                             roc_auc)
+)
+
+#LOGISTIC REGRESSION
+log_last_fit = tune::last_fit(log_workflow, 
+                              split = data_split,
+                              metrics = yardstick::metric_set(recall, 
+                                                              f_meas, 
+                                                              accuracy, 
+                                                              kap,
+                                                              roc_auc)
+)
+
+#XGBOOST
+xgb_last_fit = tune::last_fit(xgb_workflow, 
+                              split = data_split,
+                              metrics = yardstick::metric_set(recall, 
+                                                              f_meas, 
+                                                              accuracy, 
+                                                              kap,
+                                                              roc_auc)
+)
+
+#COLETANDO METRICAS
+rf_last_fit %>% tune::collect_metrics(summarize = T)
+log_last_fit %>% tune::collect_metrics(summarize = T)
+xgb_last_fit %>% tune::collect_metrics(summarize = T)
