@@ -259,6 +259,8 @@ rf_fit = rf_workflow %>%
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
+#CONFUSION MATRIX
+
 #ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
@@ -286,6 +288,8 @@ log_fit = log_workflow %>%
                                                       roc_auc),
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
+
+#CONFUSION MATRIX
 
 #ROC CURVE
 
@@ -315,6 +319,7 @@ xgb_fit = xgb_workflow %>%
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
+#CONFUSION MATRIX
 
 #ROC CURVE
 
