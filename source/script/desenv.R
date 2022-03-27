@@ -218,7 +218,7 @@ data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = ta
 #DATA PREPARATION
 data_recipe = rsample::training(x = data_split) %>%
   recipes::recipe(target ~ .) %>%
-  #recipes::step_novel(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #TRANSFORMANDO AS VARIAVEIS NOMINAIS EM FATOR
+  recipes::step_novel(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #TRANSFORMANDO AS VARIAVEIS NOMINAIS EM FATOR
   recipes::step_dummy(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #CRIANDO VARIAVEIS DUMMY (ONE-HOT ENCODING)
   recipes::step_corr(recipes::all_nominal_predictors(), threshold = 0.7, method = "spearman") %>% #REMOVENDO VARIAVEIS NOMINAIS ALTAMENTE CORRELACIONADAS
   recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>% #REMOVENDO VARIAVEIS NUMERICAS ALTAMENTE CORRELACIONADAS  
@@ -235,7 +235,7 @@ test = data_recipe %>%
   recipes::bake(rsample::testing(data_split))
 
 #CROSS VALIDATION
-cv = rsample::vfold_cv(rsample::training(x = data_split), v = 10, repeats = 2, strata = target)
+cv = rsample::vfold_cv(rsample::training(x = data_split), v = 10, repeats = 3, strata = target)
 
 # RANDOM FOREST -----------------------------------------------------------
 
@@ -256,16 +256,29 @@ rf_fit = rf_workflow %>%
                                                       f_meas, 
                                                       accuracy, 
                                                       kap, 
-                                                      roc_auc),
+                                                      roc_auc, 
+                                                      sens),
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#CONFUSION MATRIX
-
-#ROC CURVE
-
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
 save(rf_fit, file = "Data/rf3_model.Rdata")
+
+# #CARREGANDO O MODELO
+# load(file = "Data/rf2_model.Rdata", verbose = T)
+
+#CONFUSION MATRIX
+rf_fit %>% 
+  collect_predictions() %>%
+  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
+  autoplot(type = "heatmap")
+
+#CURVA ROC
+rf_fit %>%
+  collect_predictions() %>%
+  group_by(id2) %>% # id contains our folds
+  roc_curve(target, .pred_1) %>% 
+  autoplot()
 
 # LOGISTIC REGRESSION -----------------------------------------------------
 
@@ -286,16 +299,29 @@ log_fit = log_workflow %>%
                                                       f_meas, 
                                                       accuracy, 
                                                       kap, 
-                                                      roc_auc),
+                                                      roc_auc, 
+                                                      sens),
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#CONFUSION MATRIX
-
-#ROC CURVE
-
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
 save(log_fit, file = "Data/log2_model.Rdata")
+
+# #CARREGANDO O MODELO
+# load(file = "Data/log1_model.Rdata", verbose = T)
+
+#CONFUSION MATRIX
+log_fit %>% 
+  collect_predictions() %>%
+  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
+  autoplot(type = "heatmap")
+
+#CURVA ROC
+log_fit %>%
+  collect_predictions() %>%
+  group_by(id) %>% # id contains our folds
+  roc_curve(target, .pred_1) %>% 
+  autoplot()
 
 # XGOOST -----------------------------------------------
 
@@ -316,16 +342,29 @@ xgb_fit = xgb_workflow %>%
                                                       f_meas, 
                                                       accuracy, 
                                                       kap, 
-                                                      roc_auc),
+                                                      roc_auc, 
+                                                      sens),
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
-#CONFUSION MATRIX
-
-#ROC CURVE
-
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
 save(xgb_fit, file = "Data/xgb2_model.Rdata")
+
+# #CARREGANDO O MODELO
+# load(file = "Data/xgb1_model.Rdata", verbose = T)
+
+#CONFUSION MATRIX
+xgb_fit %>% 
+  collect_predictions() %>%
+  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
+  autoplot(type = "heatmap")
+
+#CURVA ROC
+xgb_fit %>%
+  collect_predictions() %>%
+  group_by(id2) %>% # id contains our folds
+  roc_curve(target, .pred_1) %>% 
+  autoplot()
 
 # COMPARANDO MODELOS ------------------------------------------------------
 
