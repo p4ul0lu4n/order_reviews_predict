@@ -57,7 +57,7 @@ idh_atlas = read.csv(file = "data/idh_atlas.csv",
 
 #IDH COM AS VARIAVEIS QUE FAZEM SENTIDO PARA A ANALISE
 idh = idh_atlas %>% 
-  dplyr::mutate(municipio = toupper(abjutils::rm_accent(`município`))) %>%
+  dplyr::mutate(municipio = toupper(abjutils::rm_accent(`município`))) %>% #REMOCAO DE ACENTOS E PADRONIZACAO EM CAIXA ALTA
   dplyr::select(uf, municipio, espvida, e_anosestudo, idhm, idhm_e, idhm_l, idhm_r, t_agua, t_banagua, t_luz, agua_esgoto)
 
 #BASE IDH JUNTA
@@ -66,16 +66,16 @@ data_idh = idh %>%
 
 #TRATANDO A VARIAVEL DE CIDADE DO VENDEDOR E CLIENTE
 sellers_idh = sellers %>% 
-  dplyr::mutate(seller_city = toupper(abjutils::rm_accent(seller_city))) %>%
-  dplyr::mutate(seller_city = stringr::str_squish(seller_city)) %>%
+  dplyr::mutate(seller_city = toupper(abjutils::rm_accent(seller_city))) %>% #REMOCAO DE ACENTOS E PADRONIZACAO EM CAIXA ALTA
+  dplyr::mutate(seller_city = stringr::str_squish(seller_city)) %>% #REMOVENDO QUALQUER ESPACO ALEM DOS NECESSARIOS
   dplyr::inner_join(y = data_idh, by = c("seller_state" = "state", "seller_city" = "municipio")) %>%
   dplyr::rename(seller_uf = uf, seller_espvida = espvida, seller_e_anosestudo = e_anosestudo, seller_idhm = idhm, seller_idhm_r = idhm_r, 
                 seller_idhm_l = idhm_l, seller_idhm_e = idhm_e, seller_t_agua = t_agua, seller_t_banagua = t_banagua, seller_t_luz = t_luz, 
                 seller_agua_esgoto = agua_esgoto)
 
 customers_idh = customers %>% 
-  dplyr::mutate(customer_city = toupper(abjutils::rm_accent(customer_city))) %>%
-  dplyr::mutate(customer_city = stringr::str_squish(customer_city)) %>%
+  dplyr::mutate(customer_city = toupper(abjutils::rm_accent(customer_city))) %>% #REMOCAO DE ACENTOS E PADRONIZACAO EM CAIXA ALTA
+  dplyr::mutate(customer_city = stringr::str_squish(customer_city)) %>% #REMOVENDO QUALQUER ESPACO ALEM DOS NECESSARIOS
   dplyr::inner_join(y = data_idh, by = c("customer_state" = "state", "customer_city" = "municipio")) %>%
   dplyr::rename(customer_uf = uf, customer_espvida = espvida, customer_e_anosestudo = e_anosestudo, customer_idhm = idhm, customer_idhm_r = idhm_r, 
                 customer_idhm_l = idhm_l, customer_idhm_e = idhm_e, customer_t_agua = t_agua, customer_t_banagua = t_banagua, customer_t_luz = t_luz, 
@@ -99,38 +99,38 @@ remove(order_items, order_payments, order_reviews, products, customers, customer
 
 # ANALISE EXPLORATORIA ------------------------------------------------------------
 
-# #VERIFICANDO BALANCEAMENTO DA POPULACAO
-# avaliacao = data %>% 
-#   dplyr::group_by(target) %>%
-#   dplyr::summarise(reviews = dplyr::n(), 
-#                    prop = round(reviews/nrow(data) * 100, 2)) %>%
-#   dplyr::mutate(value = paste0(reviews, " (", format(prop, decimal.mark = ','), "%)"))
-# 
-# #GRAFICO PARA APRESENTAR O BALANCO DA POPULACAO
-# plot_avaliacao = ggplot(data=avaliacao, aes(x = target, y = reviews)) +
-#   geom_bar(stat = "identity", fill = "steelblue")+
-#   geom_text(aes(label = value), vjust = -0.3, size = 3.5)+
-#   theme_minimal()
-#   
-# #SALVANDO ARQUIVO DO PLOT
-# ggsave(filename = "plots/review_balance.png", plot = plot_avaliacao)
-# 
-# #QUANTIDADE DE REVIEWS POR MES
-# reviews_mes = data %>%
-#   dplyr::group_by(yearmon) %>%
-#   dplyr::summarise(reviews = dplyr::n(), 
-#                    prop = round(reviews/nrow(data) * 100, 2)) %>%
-#   dplyr::mutate(value = paste0(reviews, " (", format(prop, decimal.mark = ','), "%)"))
-# 
-# #GRAFICO DE REVIEWS POR MES
-# plot_reviews_mes = ggplot(data=reviews_mes, aes(x = yearmon, y = reviews, group = 1)) +
-#   geom_line(fill = "steelblue")+
-#   geom_point()+
-#   geom_text(aes(label = reviews), vjust = -0.6, size = 3.5)+
-#   theme_minimal()
-# 
-# #SALVANDO ARQUIVO DO PLOT
-# ggsave(filename = "plots/review_mes.png", plot = plot_reviews_mes)
+#VERIFICANDO BALANCEAMENTO DA POPULACAO
+avaliacao = data %>%
+  dplyr::group_by(target) %>%
+  dplyr::summarise(reviews = dplyr::n(),
+                   prop = round(reviews/nrow(data) * 100, 2)) %>%
+  dplyr::mutate(value = paste0(reviews, " (", format(prop, decimal.mark = ','), "%)"))
+
+#GRAFICO PARA APRESENTAR O BALANCO DA POPULACAO
+plot_avaliacao = ggplot(data=avaliacao, aes(x = target, y = reviews)) +
+  geom_bar(stat = "identity", fill = "steelblue")+
+  geom_text(aes(label = value), vjust = -0.3, size = 3.5)+
+  theme_minimal()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/review_balance.png", plot = plot_avaliacao)
+
+#QUANTIDADE DE REVIEWS POR MES
+reviews_mes = data %>%
+  dplyr::group_by(yearmon) %>%
+  dplyr::summarise(reviews = dplyr::n(),
+                   prop = round(reviews/nrow(data) * 100, 2)) %>%
+  dplyr::mutate(value = paste0(reviews, " (", format(prop, decimal.mark = ','), "%)"))
+
+#GRAFICO DE REVIEWS POR MES
+plot_reviews_mes = ggplot(data=reviews_mes, aes(x = yearmon, y = reviews, group = 1)) +
+  geom_line(fill = "steelblue")+
+  geom_point()+
+  geom_text(aes(label = reviews), vjust = -0.6, size = 3.5)+
+  theme_minimal()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/review_mes.png", plot = plot_reviews_mes)
 
 # FEATURE ENGINEERING -----------------------------------------------------
 
@@ -218,9 +218,10 @@ data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = ta
 #DATA PREPARATION
 data_recipe = rsample::training(x = data_split) %>%
   recipes::recipe(target ~ .) %>%
+  #recipes::step_novel(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #TRANSFORMANDO AS VARIAVEIS NOMINAIS EM FATOR
   recipes::step_dummy(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #CRIANDO VARIAVEIS DUMMY (ONE-HOT ENCODING)
   recipes::step_corr(recipes::all_nominal_predictors(), threshold = 0.7, method = "spearman") %>% #REMOVENDO VARIAVEIS NOMINAIS ALTAMENTE CORRELACIONADAS
-  #recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>% #REMOVENDO VARIAVEIS NUMERICAS ALTAMENTE CORRELACIONADAS  
+  recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>% #REMOVENDO VARIAVEIS NUMERICAS ALTAMENTE CORRELACIONADAS  
   recipes::step_zv(recipes::all_numeric_predictors(), -recipes::all_outcomes()) #REMOVENDO VARIAVEIS COM VARIABILIDADE PROXIMA DE ZERO
   
 #BASE DE TREINO
@@ -264,7 +265,7 @@ rf_fit = rf_workflow %>%
 #ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(rf_fit, file = "Data/rf2_model.Rdata")
+save(rf_fit, file = "Data/rf3_model.Rdata")
 
 # LOGISTIC REGRESSION -----------------------------------------------------
 
@@ -294,7 +295,7 @@ log_fit = log_workflow %>%
 #ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(log_fit, file = "Data/log1_model.Rdata")
+save(log_fit, file = "Data/log2_model.Rdata")
 
 # XGOOST -----------------------------------------------
 
@@ -324,7 +325,7 @@ xgb_fit = xgb_workflow %>%
 #ROC CURVE
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(xgb_fit, file = "Data/xgb1_model.Rdata")
+save(xgb_fit, file = "Data/xgb2_model.Rdata")
 
 # COMPARANDO MODELOS ------------------------------------------------------
 
