@@ -10,6 +10,9 @@ if(length(novos.pacotes)) install.packages(novos.pacotes, repos = 'https://cran.
 options(warn = -1)
 unlist(lapply(pacotes, require, character.only = TRUE))
 
+#DEFININDO NUMEROS SEM NOTACAO CIENTIFICA
+options(scipen = 9999999999999999)
+
 #DEFININDO DIRETORIO PADRAO
 setwd("~/git/tcc/source")
 
@@ -97,9 +100,6 @@ data = orders %>%
 #REMOVENDO AS BASES QUE NAO SERAO MAIS UTILIZADAS
 remove(order_items, order_payments, order_reviews, products, customers, customers_idh, sellers, sellers_idh, orders, geolocation, idh_atlas, data_idh, idh, uf)
 
-
-# ANALISE EXPLORATORIA ------------------------------------------------------------
-
 #CONTAGEM DE LINHAS COM VALORES NULOS
 countNA = function(x) sum(is.na(x)) 
 
@@ -167,6 +167,12 @@ plot_balance = ggplot(data=avaliacao, aes(x = target, y = reviews)) +
 
 #SALVANDO ARQUIVO DO PLOT
 ggsave(filename = "plots/review_balance.png", plot = plot_balance, height = 5, width = 5.5)
+
+
+# ANALISE EXPLORATORIA ------------------------------------------------------------
+
+
+############################## ANALISE POR REGIAO #################################
 
 #QUANTIDADE DE REVIEWS POR REGIAO (CLIENTE)
 reviews_regiao_cli = data %>%
@@ -320,6 +326,9 @@ plot_regiao_vend_cli_target = ggplot(data=reviews_regiao_vend_cli, aes(x = reg_v
 #SALVANDO ARQUIVO DO PLOT
 ggsave(filename = "plots/reviews_regiao_vend_cli_target.png", plot = plot_regiao_vend_cli_target, height = 5, width = 5.5)
 
+
+############################## ANALISE POR IDH #################################
+
 #IDH CLIENTE POR AVALIACAO
 plot_idh_cli_target = ggplot(data = data, aes(x=target, y=customer_idhm)) + 
   geom_boxplot(fill = "steelblue") +
@@ -343,48 +352,217 @@ plot_idh_vend_target = ggplot(data = data, aes(x=target, y=seller_idhm)) +
   ggeasy::easy_center_title()
 
 #PLOTANDO OS GRAFICOS JUNTOS
-plot_idh_vend_cli_target = ggpubr::ggarrange(plot_idh_cli_target, plot_idh_vend_target, 
-          ncol = 2, 
-          nrow = 1, 
-          vjust = 2, 
-          hjust = 0)
+plot_idh_vend_cli_target = ggpubr::ggarrange(plot_idh_cli_target, 
+                                             plot_idh_vend_target, 
+                                             ncol = 2, 
+                                             nrow = 1, 
+                                             vjust = 2, 
+                                             hjust = 0)
 
 #SALVANDO ARQUIVO DO PLOT
 ggsave(filename = "plots/idh_vend_cli_target.png", plot = plot_idh_vend_cli_target, height = 5, width = 5.5)
 
-#QUANTIDADE POR GRUPOS DE PRODUTOS
-tipo_produto_target = data %>%
-  dplyr::group_by(product_category_name) %>%
+
+####################### ANALISE POR ESPEC. PRODUTO #############################
+
+#QUANTIDADE DE AVALIACOES POR PESO DO PRODUTO
+peso_tamanho_produto_target = data %>%
+  dplyr::select(target, product_weight_g, product_length_cm, product_height_cm, product_width_cm) %>%
+  dplyr::mutate(product_volume_m3 = (product_length_cm * product_height_cm * product_width_cm)/ 100, 
+                product_weight_kg = product_weight_g/1000) %>%
+  dplyr::group_by(target)
+
+#GRAFICO DO PESO DO PRODUTO POR AVALIACAO
+plot_peso_produto_target = ggplot(data = peso_tamanho_produto_target, aes(x = product_weight_kg, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Peso dos \n Produtos (kg) por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Peso (kg)") +
+  ggeasy::easy_center_title()
+
+#GRAFICO DO PESO DO PRODUTO POR AVALIACAO
+plot_peso_produto_target = ggplot(data = peso_tamanho_produto_target, aes(x = product_weight_kg, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Peso dos \n Produtos (kg) por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Peso (kg)") +
+  ggeasy::easy_center_title()
+
+#GRAFICO DO VOLUME DO PRODUTO POR AVALIACAO
+plot_volume_produto_target = ggplot(data = peso_tamanho_produto_target, aes(x = product_volume_m3, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Volume dos \n Produtos (m3) por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Volume (m3)") +
+  ggeasy::easy_center_title()
+
+
+#PLOTANDO OS GRAFICOS JUNTOS
+plot_peso_volume_produto_target= ggpubr::ggarrange(plot_peso_produto_target, 
+                                                   plot_volume_produto_target, 
+                                                   ncol = 1, 
+                                                   nrow = 2, 
+                                                   vjust = 2, 
+                                                   hjust = 0)
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/peso_volume_produto_target.png", plot = plot_peso_volume_produto_target, height = 5, width = 5.5)
+
+#FOTOS POR PRODUTO E SUAS AVALIACOES
+fotos_produto_target = data %>%
+  dplyr::select(target, product_photos_qty) %>%
+  dplyr::mutate(product_photos_qty = ifelse(test = is.na(product_photos_qty), yes = 0, no = product_photos_qty)) %>%
+  dplyr::filter(product_photos_qty <= 6) %>%
+  dplyr::group_by(product_photos_qty, target) %>%
   dplyr::summarise(n = dplyr::n()) %>%
-  dplyr::arrange(desc(n)) %>%
-  dplyr::mutate(grupo_produto = ifelse(test = n >= 2400, yes = product_category_name, no = "outros"))
+  dplyr::mutate(prop = round(n/sum(n) * 100, 2), 
+                value = paste0(format(n, big.mark = '.'), " (", format(prop, decimal.mark = ','), "%)"))
 
-ggplot(data = tipo_produto_target, aes(qt, colour = product_category_name)) + 
-stat_ecdf(geom = "step")
-#sum(tipo_produto_target[1:16, 2])/sum(tipo_produto_target[, 2])
+#GRAFICO PARA APRESENTAR OS REVIEWS POR REGIAO (VENDEDOR)
+plot_foto_produto_target = ggplot(data=fotos_produto, aes(x = as.factor(product_photos_qty), y = n, fill = target)) +
+  geom_bar(stat = "identity", position = "fill")+
+  geom_text(aes(label = value), vjust = -0.3, size = 2, position = "fill")+
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Número de Fotos do Produto por avaliação") +
+  xlab("Número de Fotos") + 
+  ylab("Quantidade") +
+  ggeasy::easy_center_title()
 
-# #QUANTIDADE DE REVIEWS POR MES
-# reviews_mes = data %>%
-#   dplyr::group_by(yearmon) %>%
-#   dplyr::summarise(reviews = dplyr::n(),
-#                    prop = round(reviews/nrow(data) * 100, 2)) %>%
-#   dplyr::mutate(value = paste0(reviews, " (", format(prop, decimal.mark = ','), "%)"))
-# 
-# #GRAFICO DE REVIEWS POR MES
-# plot_reviews_mes = ggplot(data=reviews_mes, aes(x = yearmon, y = reviews, group = 1)) +
-#   geom_line(fill = "steelblue")+
-#   geom_text(aes(label = value), vjust = -0.3, size = 3.5, position = "identity")+
-#   theme(panel.border = element_rect(color = "steelblue",
-#                                     fill = NA,
-#                                     size = 2)) +
-#   ggtitle(label = "Reviews por Mês") +
-#   xlab("Ano/Mês") +
-#   ylab("Quantidade") +
-#   ggeasy::easy_center_title()
-# 
-# 
-# #SALVANDO ARQUIVO DO PLOT
-# ggsave(filename = "plots/review_mes.png", plot = plot_reviews_mes)
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/foto_produto_target.png", plot = plot_foto_produto_target, height = 5, width = 5.5)
+
+
+###################### ANALISE POR VARIAVEIS DE TEMPO ##########################
+
+temp_diff_target = data %>%
+  dplyr::mutate(temp_carimb_approv = as.numeric(as.Date(order_approved_at) - as.Date(order_purchase_timestamp)), 
+                temp_approv_lanc = as.numeric(as.Date(order_delivered_carrier_date) - as.Date(order_approved_at)), 
+                temp_lanc_estim_deliv = as.numeric(as.Date(order_estimated_delivery_date) - as.Date(order_delivered_carrier_date))) %>%
+  dplyr::select(target, order_purchase_timestamp, order_approved_at, order_delivered_carrier_date, order_estimated_delivery_date, 
+                temp_carimb_approv, temp_approv_lanc, temp_lanc_estim_deliv) %>%
+  dplyr::filter(temp_carimb_approv >= 0 & temp_approv_lanc >= 0 & temp_lanc_estim_deliv >= 0) %>%
+  dplyr::group_by(target)
+
+#GRAFICO DO TEMPO ENTRE O DATA DA REALIZACAO DO PEDIDO E A DATA DE APROVACAO POR AVALIACAO
+plot_temp_carimb_approv_target = ggplot(data = temp_diff_target, aes(x = temp_carimb_approv, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Tempo (dias) entre a Data de \n Carimbo do Pedido e a de Aprovação por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Volume (m3)") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/temp_carimb_approv_target.png", plot = plot_temp_carimb_approv_target, height = 5, width = 5.5)
+
+#GRAFICO DO TEMPO ENTRE O DATA DA REALIZACAO DO PEDIDO E A DATA DE APROVACAO POR AVALIACAO
+plot_temp_approv_lanc_target = ggplot(data = temp_diff_target, aes(x = temp_approv_lanc, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Tempo (dias) entre a Data de \n Aprovação do Pedido e a de Lançamento por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Volume (m3)") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/temp_approv_lanc_target.png", plot = plot_temp_approv_lanc_target, height = 5, width = 5.5)
+
+#GRAFICO DO TEMPO ENTRE O DATA DA REALIZACAO DO PEDIDO E A DATA DE APROVACAO POR AVALIACAO
+plot_temp_lanc_estim_deliv_target = ggplot(data = temp_diff_target, aes(x = temp_lanc_estim_deliv, colour = target)) + 
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição Acumulada do Tempo (dias) entre a Data de \n Lançamento do Pedido e a de Entrega Estimada por Avaliação") +
+  ylab("Acumulada") +
+  xlab("Volume (m3)") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/temp_lanc_estim_deliv_target.png", plot = plot_temp_lanc_estim_deliv_target, height = 5, width = 5.5)
+
+
+##################### ANALISE POR VARIAVEIS FINANCEIRAS ########################
+
+#VALOR DA TRANSACAO POR AVALIACAO
+finan_value_target = data %>%
+  dplyr::select(target, payment_value) %>%
+  dplyr::group_by(target) 
+
+#DIST DO VALOR DA TRANSACAO POR AVALIACAO
+plot_finan_value_target = ggplot(data = finan_value_target, aes(x=target, y=payment_value)) + 
+  geom_boxplot(fill = "steelblue") +
+  scale_y_continuous(limits = c(0, 1000)) +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Distribuição de Valores das Transações por Avaliação") +
+  xlab("Target") +
+  ylab("Valor da Transação") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/finan_value_target.png", plot = plot_finan_value_target, height = 5, width = 5.5)
+
+#VARIAVEIS DE TIPO DE PAGAMENTO POR AVALIACAO
+finan_pay_type_target = data %>%
+  dplyr::select(target, payment_type) %>%
+  dplyr::group_by(payment_type, target) %>%
+  dplyr::summarise(reviews = dplyr::n()) %>%
+  dplyr::mutate(prop = round((reviews/sum(reviews)) * 100, 2),
+                value = paste0(format(reviews, big.mark = '.'), " (", format(prop, decimal.mark = ','), "%)")) %>%
+  dplyr::arrange(payment_type)
+
+#GRAFICO PARA APRESENTAR OS REVIEWS POR TIPO DE PAGAMENTO
+plot_finan_pay_type_target = ggplot(data=finan_pay_type_target, aes(x = payment_type, y = reviews, fill = target)) +
+  geom_bar(stat = "identity", position = "fill")+
+  geom_text(aes(label = value), vjust = -0.3, size = 3.5, position = "fill")+
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Reviews por Tipo de Pagamento e suas Avaliações") +
+  xlab("Tipo de Pagamento") +
+  ylab("Proporção") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/finan_pay_type_target.png", plot = plot_finan_pay_type_target, height = 5, width = 5.5)
+
+#VARIAVEIS DE PARCELAS POR AVALIACAO
+finan_pay_inst_target = data %>%
+  dplyr::select(target, payment_installments) %>%
+  dplyr::group_by(target)
+
+#GRAFICO PARA APRESENTAR OS REVIEWS POR TIPO DE PAGAMENTO
+plot_finan_pay_inst_target = ggplot(data = finan_pay_inst_target, aes(x = payment_installments, colour = target)) +
+  #geom_boxplot(fill = "steelblue") +
+  stat_ecdf(geom = "step") +
+  theme(panel.border = element_rect(color = "steelblue",
+                                    fill = NA,
+                                    size = 2)) +
+  ggtitle(label = "Reviews por Número de Parcelas e suas Avaliações") +
+  xlab("Target") +
+  ylab("Proporção") +
+  ggeasy::easy_center_title()
+
+#SALVANDO ARQUIVO DO PLOT
+ggsave(filename = "plots/finan_pay_inst_target.png", plot = plot_finan_pay_inst_target, height = 5, width = 5.5)
+
 
 # FEATURE ENGINEERING -----------------------------------------------------
 
