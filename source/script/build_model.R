@@ -6,14 +6,11 @@ rm(list = ls())
 #DEFININDO DIRETORIO PADRAO
 setwd("~/git/tcc/source")
 
-#EXECUTANDO ARQUIVO DE PREAMBULO (INSTALACAO E CARREGAMENTO DE PACOTES)
+#EXECUTANDO ARQUIVO DE PREAMBULO (INSTALACAO E/OU CARREGAMENTO DE PACOTES)
 source("script/preambulo.R")
 
 #CARREGANDO A BASE
 load("data/data.Rdata", verbose = T)
-
-#FUNCAO QUE SUBSTITUI NA POR QUALQUER VALOR
-repNA = function(df, valor)tidyr::replace_na(data = df, replace = valor)
 
 #CRIACAO DE VARIAVEIS
 data_new_var = data %>%
@@ -27,43 +24,13 @@ data_new_var = data %>%
   dplyr::mutate(product_photos_qty = ifelse(test = is.na(product_photos_qty), yes = 0, no = product_photos_qty), 
                 temp_diff_purchase_approv = as.numeric(as.Date(order_approved_at) - as.Date(order_purchase_timestamp)), 
                 temp_diff_approv_carrier = as.numeric(as.Date(order_delivered_carrier_date) - as.Date(order_approved_at)), 
-                temp_carrier_estim = as.numeric(as.Date(order_estimated_delivery_date) - as.Date(order_delivered_carrier_date)), 
-                #payment_type = as.factor(payment_type)
-                payment_type = dplyr::case_when(payment_type == 'boleto' ~ 1,
-                                                payment_type == 'credit_card' ~ 2,
-                                                payment_type == 'debit_card' ~ 3,
-                                                payment_type == 'voucher' ~ 4,
-                                                TRUE ~ 0)) %>%
+                temp_diff_carrier_estim = as.numeric(as.Date(order_estimated_delivery_date) - as.Date(order_delivered_carrier_date)), 
+                payment_type = as.factor(payment_type)) %>%
   dplyr::select(-c(order_approved_at, order_purchase_timestamp, order_delivered_carrier_date, order_estimated_delivery_date)) %>%
-  dplyr::mutate(dplyr::across(c(dplyr::starts_with('seller'),
-                                dplyr::starts_with('customer')), ~repNA(.x, median(.x, na.rm = T)), .names = "{col}")) %>%
-  dplyr::mutate(dplyr::across(dplyr::starts_with("temp"), ~repNA(.x, -2), .names = "{col}")) %>%
-  dplyr::mutate(dplyr::across(c(dplyr::starts_with("product"),
-                                dplyr::starts_with("payment_i"), 
-                                dplyr::starts_with("payment_v")), ~repNA(.x, 0), .names = "{col}")) %>%
   dplyr::mutate_if(is.integer, as.numeric)
 
-# #REBALANCEAMENTO DA AMOSTRA
-# 
-# #NUMERO DE AVALIACOES RUINS
-# target_ruim = data_new_var %>%
-#   dplyr::filter(target == 1) %>%
-#   nrow()
-# 
-# #NUMERO DE AVALIACOES BOAS
-# target_bom = data_new_var %>%
-#   dplyr::filter(target == 0) %>%
-#   nrow()
-# 
-# #NUMERO DE REGISTROS A SEREM INCLUIDOS PARA OVERSAMPLING
-# new_values = target_bom - target_ruim
-# 
-# #BASE BOM NOVOS REGISTROS A PARTIR DE REAMOSTRAGEM
-# base_new_values = imbalance::oversam(data_new_var, classAttr = "target", numInstances = new_values)
-# 
-# base_mesclada_final = rbind(data, base_new_values)
-# 
-# base_final = unique(base_mesclada_final)
+#LIBERANDO ESPAÇO REMOVENDO O OBJETO DATA
+remove(data)
 
 # PRE PROCESS -----------------------------------------------------------
 
@@ -73,33 +40,44 @@ set.seed(123)
 #DIVIDINDO A POPULACAO EM TREINO E TESTE
 data_split = rsample::initial_split(data = data_new_var, prop = 0.7, strata = target)
 
-#DATA PREPARATION
-data_recipe = rsample::training(x = data_split) %>%
+#BASE DE TREINO E TESTE
+data_train = rsample::training(x = data_split)
+data_test = rsample::testing(data_split)
+
+#LIBERANDO ESPAÇO REMOVENDO O OBJETO DATA
+remove(data_new_var)
+
+#DATA PREPOCESSING
+data_recipe = data_train %>%
   recipes::recipe(target ~ .) %>%
-  #recipes::step_novel(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #TRANSFORMANDO AS VARIAVEIS NOMINAIS EM FATOR
-  #recipes::step_dummy(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% #CRIANDO VARIAVEIS DUMMY (ONE-HOT ENCODING)
-  #recipes::step_corr(recipes::all_nominal_predictors(), threshold = 0.7, method = "spearman") %>% #REMOVENDO VARIAVEIS NOMINAIS ALTAMENTE CORRELACIONADAS
-  recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>% #REMOVENDO VARIAVEIS NUMERICAS ALTAMENTE CORRELACIONADAS  
-  recipes::step_zv(recipes::all_numeric_predictors(), -recipes::all_outcomes()) #REMOVENDO VARIAVEIS COM VARIABILIDADE PROXIMA DE ZERO
+  recipes::step_relevel(target, ref_level = "1") %>%
+  themis::step_downsample(target, under_ratio = 1) %>%
+  recipes::step_knnimpute(recipes::all_numeric_predictors(), -recipes::all_outcomes()) %>%
+  recipes::step_normalize(recipes::all_numeric_predictors(), -recipes::all_outcomes()) %>%
+  recipes::step_dummy(recipes::all_nominal_predictors(), -recipes::all_outcomes()) %>% 
+  recipes::step_corr(recipes::all_numeric_predictors(), threshold = 0.7, method = "pearson") %>%   
+  recipes::step_nzv(recipes::all_numeric_predictors(), -recipes::all_outcomes()) %>% 
+  recipes::step_pca(recipes::all_numeric_predictors(), threshold = .8)
+  #themis::step_smote(target, over_ratio = 1)
 
-#BASE DE TREINO
-preppared_data = data_recipe %>%
-  recipes::prep() %>%
-  recipes::juice()
-
-#BASE DE TESTE
-test = data_recipe %>%
-  recipes::prep() %>%
-  recipes::bake(rsample::testing(data_split))
+# #VERIFICACAO DA BASE DE TREINO
+# train = data_recipe %>%
+#   recipes::prep() %>%
+#   recipes::juice()
+# 
+# 
+# #VERIFICACAO DA BASE DE TESTE
+# test = data_recipe %>%
+#   recipes::prep() %>%
+#   recipes::bake(rsample::testing(data_split))
 
 #CROSS VALIDATION
-cv = rsample::vfold_cv(rsample::training(x = data_split), v = 10, repeats = 3, strata = target)
+cv = rsample::vfold_cv(data = data_train, v = 3, repeats = 2, strata = target)
 
 # RANDOM FOREST -----------------------------------------------------------
 
 #ESPECIFICANDO O MODELO
 rf_spec = parsnip::rand_forest() %>% 
-  set_args(mtry = tune()) %>%
   parsnip::set_engine("ranger", importance = "impurity") %>% 
   parsnip::set_mode("classification")
 
@@ -108,41 +86,83 @@ rf_workflow = workflows::workflow() %>%
   workflows::add_recipe(data_recipe) %>%
   workflows::add_model(rf_spec)
 
-#GRID DE PARAMETROS
-rf_grid = expand.grid(mtry = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+#SALVANDO RDATA DO WORKFLOW
+save(rf_workflow, file = "Data/rf4_workflow.Rdata")
 
+#GRID DE PARAMETROS
+rf_grid = expand.grid(mtry = c(3, 4, 5))
+
+#INICIANDO CRONOMETRO DE EXECUCAO
 tictoc::tic()
+
 #AJUSTE DO MODELO
 rf_fit = rf_workflow %>%
   tune::tune_grid(resamples = cv, 
                   grid = rf_grid,
                   metrics = yardstick::metric_set(recall, 
+                                                  spec,
                                                   f_meas, 
                                                   accuracy, 
                                                   kap, 
-                                                  roc_auc, 
-                                                  sens),
+                                                  roc_auc),
                   control = tune::control_resamples(save_pred = TRUE)
   ) 
-tictoc::toc()
-#SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(rf_fit, file = "Data/rf3_model.Rdata")
 
-# #CARREGANDO O MODELO
-# load(file = "Data/rf2_model.Rdata", verbose = T)
+#SALVANDO O MODELO EM UM ARQUIVO .RDATA
+save(rf_fit, file = "Data/rf4_model.Rdata")
+
+#FINALIZANDO CRONOMETRO DE EXECUCAO
+tictoc::toc()
+
+#CARREGANDO O MODELO
+load(file = "Data/rf4_model.Rdata", verbose = T)
+
+#MOSTRANDO O MELHOR MODELO NO TREINO
+rf_fit %>% tune::show_best(metric = "recall")
+
+#SELECIONANDO O MODELO COM OS MELHORES PARAMETROS
+rf_best_param = rf_fit %>% 
+  tune::select_best(metric = "recall")
+
+#CARREGANDO O RDATA DO WORKFLOW
+load(file = "Data/rf4_workflow.Rdata", verbose = T)
+
+#FINALIZANDO O workflow COM OS MELHORES PARAMETROS
+rf_best_workflow = rf_workflow %>% 
+  tune::finalize_workflow(rf_best_param)
+
+#RANDOM FOREST 
+rf_last_fit = tune::last_fit(rf_best_workflow, 
+                             split = data_split,
+                             metrics = yardstick::metric_set(recall, 
+                                                             spec,
+                                                             f_meas, 
+                                                             accuracy, 
+                                                             kap,
+                                                             roc_auc)
+)
+
+#COLETANDO METRICAS
+rf_last_fit %>% tune::collect_metrics(summarize = T)
 
 #CONFUSION MATRIX
-rf_fit %>% 
-  collect_predictions() %>%
-  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
-  autoplot(type = "heatmap")
+rf_conf_mat = rf_last_fit %>% 
+  tune::collect_predictions() %>%
+  yardstick::conf_mat(truth = target, estimate = .pred_class) %>%
+  tune::autoplot(type = "heatmap")
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/rf4_conf_mat.png", plot = rf_conf_mat, height = 5, width = 5.5)
 
 #CURVA ROC
-rf_fit %>%
-  collect_predictions() %>%
-  group_by(id2) %>% # id contains our folds
-  roc_curve(target, .pred_1) %>% 
-  autoplot()
+rf_roc_curve = rf_last_fit %>%
+  tune::collect_predictions() %>%
+  dplyr::group_by(id) %>%
+  yardstick::roc_curve(target, .pred_1) %>% 
+  tune::autoplot()
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/rf4_roc_curve.png", plot = rf_roc_curve, height = 5, width = 5.5)
 
 # LOGISTIC REGRESSION -----------------------------------------------------
 
@@ -156,41 +176,90 @@ log_workflow = workflows::workflow() %>%
   workflows::add_recipe(data_recipe) %>%
   workflows::add_model(log_spec)
 
+#SALVANDO RDATA DO WORKFLOW
+save(log_workflow, file = "Data/log_workflow.Rdata")
+
+#GRID DE PARAMETROS
+log_grid = expand.grid(mtry = c(0.1, 1, 5))
+
+#INICIANDO CRONOMETRO DE EXECUCAO
+tictoc::tic()
+
 #AJUSTE DO MODELO
 log_fit = log_workflow %>% 
   tune::fit_resamples(resamples = cv, 
-                      metrics = yardstick::metric_set(recall, 
+                      grid = log_grid,
+                      metrics = yardstick::metric_set(recall,
+                                                      spec,
                                                       f_meas, 
                                                       accuracy, 
                                                       kap, 
-                                                      roc_auc, 
-                                                      sens),
+                                                      roc_auc),
                       control = tune::control_resamples(save_pred = TRUE)
   ) 
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(log_fit, file = "Data/log2_model.Rdata")
+save(log_fit, file = "Data/log_model.Rdata")
 
-# #CARREGANDO O MODELO
-# load(file = "Data/log1_model.Rdata", verbose = T)
+#FINALIZANDO CRONOMETRO DE EXECUCAO
+tictoc::toc()
+
+#CARREGANDO O MODELO
+load(file = "Data/log_model.Rdata", verbose = T)
+
+#MOSTRANDO O MELHOR MODELO NO TREINO
+log_fit %>% tune::show_best(metric = "recall")
+
+#SELECIONANDO O MODELO COM OS MELHORES PARAMETROS
+log_best_param = log_fit %>% 
+  tune::select_best(metric = "recall")
+
+#CARREGANDO O RDATA DO WORKFLOW
+load(file = "Data/log_workflow.Rdata", verbose = T)
+
+#FINALIZANDO O workflow COM OS MELHORES PARAMETROS
+log_best_workflow = log_workflow %>% 
+  tune::finalize_workflow(log_best_param)
+
+#RANDOM FOREST 
+log_last_fit = tune::last_fit(log_best_workflow, 
+                              split = data_split,
+                              metrics = yardstick::metric_set(recall,
+                                                              spec,
+                                                              f_meas, 
+                                                              accuracy, 
+                                                              kap,
+                                                              roc_auc)
+)
+
+#COLETANDO METRICAS
+log_last_fit %>% tune::collect_metrics(summarize = T)
 
 #CONFUSION MATRIX
-log_fit %>% 
-  collect_predictions() %>%
-  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
-  autoplot(type = "heatmap")
+log_cont_mat = log_last_fit %>% 
+  tune::collect_predictions() %>%
+  yardstick::conf_mat(truth = target, estimate = .pred_class) %>%
+  tune::autoplot(type = "heatmap")
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/log_conf_mat.png", plot = log_cont_mat, height = 5, width = 5.5)
 
 #CURVA ROC
-log_fit %>%
-  collect_predictions() %>%
-  group_by(id) %>% # id contains our folds
-  roc_curve(target, .pred_1) %>% 
-  autoplot()
+log_roc_curve = log_last_fit %>%
+  tune::collect_predictions() %>%
+  dplyr::group_by(id) %>%
+  yardstick::roc_curve(target, .pred_1) %>% 
+  tune::autoplot()
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/log_roc_curve.png", plot = log_roc_curve, height = 5, width = 5.5)
+
+#SALVANDO O PLOT
 
 # XGOOST -----------------------------------------------
 
 #ESPECIFICANDO O MODELO
-xgb_spec <- parsnip::boost_tree() %>%
+xgb_spec = parsnip::boost_tree() %>%
   parsnip::set_engine("xgboost") %>% 
   parsnip::set_mode("classification")
 
@@ -199,36 +268,88 @@ xgb_workflow = workflows::workflow() %>%
   workflows::add_recipe(data_recipe) %>%
   workflows::add_model(xgb_spec)
 
+#SALVANDO RDATA DO WORKFLOW
+save(xgb_workflow, file = "Data/xgb_workflow.Rdata")
+
+#GRID DE PARAMETROS
+xgb_grid = expand.grid(subsample = 0.5, 
+                       colsample_bytree = 0.5,
+                       max_depth = 3,
+                       min_child = seq(1), 
+                       eta = c(0.1)
+)
+
+#INICIANDO CRONOMETRO DE EXECUCAO
+tictoc::tic()
+
 #AJUSTE DO MODELO
 xgb_fit = xgb_workflow %>% 
-  tune::fit_resamples(resamples = cv, 
-                      metrics = yardstick::metric_set(recall, 
-                                                      f_meas, 
-                                                      accuracy, 
-                                                      kap, 
-                                                      roc_auc, 
-                                                      sens),
-                      control = tune::control_resamples(save_pred = TRUE)
+  tune::tune_grid(resamples = cv, 
+                  grid = xgb_grid,
+                  metrics = yardstick::metric_set(recall,
+                                                  spec,
+                                                  f_meas, 
+                                                  accuracy, 
+                                                  kap, 
+                                                  roc_auc),
+                  control = tune::control_resamples(save_pred = TRUE)
   ) 
 
 #SALVANDO O MODELO EM UM ARQUIVO .RDATA
-save(xgb_fit, file = "Data/xgb2_model.Rdata")
+save(xgb_fit, file = "Data/xgb_model.Rdata")
 
-# #CARREGANDO O MODELO
-# load(file = "Data/xgb1_model.Rdata", verbose = T)
+#FINALIZANDO CRONOMETRO DE EXECUCAO
+tictoc::toc()
+
+#CARREGANDO O MODELO
+load(file = "Data/xgb_model.Rdata", verbose = T)
+
+#MOSTRANDO O MELHOR MODELO NO TREINO
+xgb_fit %>% tune::show_best(metric = "recall")
+
+#SELECIONANDO O MODELO COM OS MELHORES PARAMETROS
+xgb_best_param = xgb_fit %>% 
+  tune::select_best(metric = "recall")
+
+#CARREGANDO O RDATA DO WORKFLOW
+load(file = "Data/xgb_workflow.Rdata", verbose = T)
+
+#FINALIZANDO O workflow COM OS MELHORES PARAMETROS
+xgb_best_workflow = xgb_workflow %>% 
+  tune::finalize_workflow(xgb_best_param)
+
+#RANDOM FOREST 
+xgb_last_fit = tune::last_fit(xgb_best_workflow, 
+                              split = data_split,
+                              metrics = yardstick::metric_set(recall,
+                                                              spec,
+                                                              f_meas, 
+                                                              accuracy, 
+                                                              kap,
+                                                              roc_auc)
+)
+
+#COLETANDO METRICAS
+xgb_last_fit %>% tune::collect_metrics(summarize = T)
 
 #CONFUSION MATRIX
-xgb_fit %>% 
-  collect_predictions() %>%
-  conf_mat(truth = target, estimate = .pred_class, dnn = c("Esperado", "Observado")) %>%
-  autoplot(type = "heatmap")
+xgb_conf_mat = xgb_last_fit %>% 
+  tune::collect_predictions() %>%
+  yardstick::conf_mat(truth = target, estimate = .pred_class) %>%
+  tune::autoplot(type = "heatmap")
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/xgb_conf_mat.png", plot = xgb_conf_mat, height = 5, width = 5.5)
 
 #CURVA ROC
-xgb_fit %>%
-  collect_predictions() %>%
-  group_by(id2) %>% # id contains our folds
-  roc_curve(target, .pred_1) %>% 
-  autoplot()
+xgb_roc_curve = xgb_last_fit %>%
+  tune::collect_predictions() %>%
+  dplyr::group_by(id) %>%
+  yardstick::roc_curve(target, .pred_1) %>% 
+  tune::autoplot()
+
+#SALVANDO O PLOT
+ggsave(filename = "plots/xgb_roc_curve.png", plot = xgb_roc_curve, height = 5, width = 5.5)
 
 # COMPARANDO MODELOS ------------------------------------------------------
 
@@ -240,7 +361,6 @@ rf_metrics = rf_fit %>%
 log_metrics = log_fit %>% 
   tune::collect_metrics(summarise = TRUE) %>%
   dplyr::mutate(model = "Logistic Regression")
-
 
 xgb_metrics = xgb_fit %>% 
   tune::collect_metrics(summarise = TRUE) %>%
