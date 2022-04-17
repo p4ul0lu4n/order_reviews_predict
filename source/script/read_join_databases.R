@@ -4,7 +4,7 @@
 rm(list = ls())
 
 #DEFININDO DIRETORIO PADRAO
-setwd("~/git/tcc/source")
+setwd("source")
 
 #EXECUTANDO ARQUIVO DE PREAMBULO (INSTALACAO E CARREGAMENTO DE PACOTES)
 source("script/preambulo.R")
